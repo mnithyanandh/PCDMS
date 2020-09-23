@@ -1,5 +1,5 @@
 # MAPD_F2020
-Mobile Applications Development Program - Centennial College
+Mobile Applications Development Program - Centennial College. 
 This is the master repo for the MAPD F2020 program.
 
 # Classes listed:
