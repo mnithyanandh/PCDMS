@@ -10,4 +10,4 @@ This is the master repo for the MAPD F2020 program.
 - MAPD 715
 
 # Latest operational branch:
-- MAPD 714 iOS Development
+- MAPD 714 iOS Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_714_iOS_Development
