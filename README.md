@@ -1,13 +1,5 @@
-# MAPD_F2020
-Mobile Applications Development Program - Centennial College. 
-This is the master repo for the MAPD F2020 program.
+# MAPD 712
+Web Technologies
 
-# Classes listed:
-- MAPD 711
-- MAPD 712
-- MAPD 713
-- MAPD 714
-- MAPD 715
+# Assignment 1:
 
-# Latest operational branch:
-- MAPD 714 iOS Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_714_iOS_Development
