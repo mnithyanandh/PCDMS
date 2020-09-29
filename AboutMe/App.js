@@ -35,5 +35,5 @@ export default function AboutMe() {
       <Text>Nithyanandh Mahalingam</Text><Text>MSc, BE</Text>
       <Text>I am a student at Centennial College, pursuing the MAPD Program</Text>
     </View>
-    
-  )
+  );
+}
