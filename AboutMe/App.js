@@ -32,8 +32,8 @@ export default function AboutMe() {
       justifyContent: 'center',
       alignItems: 'center'
     }}>
-      <Text>Nithyanandh Mahalingam</Text><Text>MSc, BE</Text>
-      <Text>I am a student at Centennial College, pursuing the MAPD Program</Text>
+      <Text>Nithyanandh Mahalingam MSc, BE</Text>
+      <Text>I am a student at Centennial Colleger in the MAPD Program</Text>
     </View>
   );
 }
