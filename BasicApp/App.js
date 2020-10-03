@@ -12,6 +12,7 @@ import {
   View,
   Text,
   TextInput,
+  Button,
 } from 'react-native';
 
 export default function BasicApp() {
@@ -21,10 +22,10 @@ export default function BasicApp() {
   return (
     <View style={styles.container}>
       <TextInput style={styles.edit}
-        onChangeText = {text=>onChangeText(text)}
+        onChangeText = {(text)=>onChangeText(text)}
         val={value} clearTextOnFocus={true}
       />
-
+      <Button title='Clear' onPress={()=>onChangeText(' ')} color='red' />
       <Text>{value}</Text>
     </View>
   );
@@ -44,5 +45,18 @@ const styles = StyleSheet.create(
       width: '90%'
     },
     text:{}
+  }
+);
+const Background = StyleSheet.create(
+  {
+    red:{
+      color: 'red'
+    },
+    blue:{
+      color: 'blue'
+    },
+    black:{
+      color: 'black'
+    }
   }
 );
