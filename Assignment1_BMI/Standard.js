@@ -29,6 +29,11 @@ export default class ICalculation extends Component{
         this.setState({ lbs: text })
     }
     measurement=(feet, inches, lbs)=>{
+
+        if(parseFloat(inches) > 12){
+            this.setState({result: 'Incorrect values entered. Please try again.'})
+        }
+        else{
         var temp_inches = parseFloat(feet*12) + parseFloat(inches);
         var height=parseFloat(temp_inches*2.5);
         var weight=parseFloat(lbs*0.453592);
@@ -50,6 +55,7 @@ export default class ICalculation extends Component{
         }
         else{
             this.setState({result: 'Incorrect values entered. Please try again.'})
+        }
         }
     }
     render() {
