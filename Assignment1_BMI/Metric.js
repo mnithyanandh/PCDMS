@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 class Metric extends Component {
     render()
@@ -11,13 +11,12 @@ class Metric extends Component {
         );
     }
 }
-
-class Calculation extends Component{
+export default class MCalculation extends Component{
     state={
-        height='',
-        kgs='',
-        bmi='',
-        result=''
+        height: '',
+        kgs: '',
+        bmi: '',
+        result: ''
     }
     heightHandler=(text)=>{
         this.setState({ height: text })
@@ -26,39 +25,63 @@ class Calculation extends Component{
         this.setState({ kgs: text })
     }
     measurement=(height, kgs)=>{
-        var res=
-        (parseFloat(kgs*10000))/(parseFloat(height*0.01))*(parseFloat(height*0.01));
-        res=res.toFixed(3);
+        var res=(parseFloat(kgs*10000))/((parseFloat(height))*(parseFloat(height)));
+        res=res.toFixed(2);
         this.setState({bmi: res})
 
         if(res < 18.5){
-            this.setState({result: 'You are under-weight. Giddy up and eat up!'})
+            this.setState({result: 'You are under-weight. Giddy up and eat well!'})
         }
         else if(res >= 18.5 && res < 25){
             this.setState({result: 'You are of normal weight!'})
         }
         else if(res >= 25 && res < 30){
-            this.setState({result: 'You are over-weight. Make then regular runs!'})
+            this.setState({result: 'You are over-weight. Make them regular runs!'})
         }
         else if(res > 30){
-            this.setState({result: 'Obese. Really need to make a diet plan!'})
+            this.setState({result: 'Generally considered obese. Really need to make a workout plan!'})
         }
         else{
             this.setState({result: 'Incorrect values entered. Please try again.'})
         }
     }
-}
-render() {
-    return (
-       <View style = {styles.container}>
-        </View>
-    );
+    render() {
+        return (
+           <View style = {styles.container}>
+               <Text style = {styles.title}>Metric Measurement</Text>
+               
+               <Text style = {styles.label}>Height</Text>
+               <TextInput style = {styles.input}
+               underlineColorAndroid = 'transparent'
+               placeholder = 'Height (cm)'
+               autoCapitalize = 'none'
+               onChangeText = {this.heightHandler}/>
+               
+               <Text style = {styles.label}>Weight</Text>
+               <TextInput style = {styles.input}
+               underlineColorAndroid = 'transparent'
+               placeholder = 'Kilograms (kgs)'
+               autoCapitalize = 'none'
+               onChangeText = {this.weightHandler}/>
+               
+               <TouchableOpacity
+                style = {styles.submit}
+                onPress = {() => this.measurement(this.state.height, this.state.kgs)}>
+                <Text style = {styles.submitText}> Calculate </Text>
+               </TouchableOpacity>
+               
+               <Text style = {styles.output}>{this.state.bmi}</Text>
+               
+               <Text style = {styles.result}>{this.state.result}</Text>
+           </View>
+        );
+    }
 }
 
-const style = StyleSheet.create(
+const styles = StyleSheet.create(
     {
         container: {
-            paddintTop: 25
+            paddingTop: 25
         },
         title:{
             paddingTop:30,
@@ -84,7 +107,7 @@ const style = StyleSheet.create(
             paddingTop:20,
             paddingBottom:10,
             textAlign: "center",
-            fontSize: 30,
+            fontSize: 20,
             color: 'black'
          },
         submit: {

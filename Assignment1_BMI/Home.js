@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
 import Metric from './Metric';
 import Standard from './Standard';
 
