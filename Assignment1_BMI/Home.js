@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import { View, Text } from 'react-native';
-import { Icon } from 'react-native-paper/lib/typescript/src/components/Avatar/Avatar';
-import { createBottomTabNavigator } from 'react-navigation';
-import { createAppContainer } from 'react-navigation';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs'
+import { Icon } from 'react-native-elements';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import Metric from './Metric';
 import Standard from './Standard';
@@ -23,6 +22,9 @@ const BtTab=createMaterialBottomTabNavigator(
     {
         Home:{screen:Home, navigationOptions: {
             tabBarLabel: 'Home',
+            justifyContent: 'center',
+            fontSize: 25,
+            alignItems: 'center',
             activeColor: '#ff0000',
             inactiveColor: '#000000',
             barStyle: {backgroundColor: '#67baf6'},
@@ -30,18 +32,22 @@ const BtTab=createMaterialBottomTabNavigator(
                 <View>
                     <Icon name={'home'} size={25} style={{color: '#ff0000'}}/>
                 </View>
-            )}
+            )
+            }
         },
         Standard:{screen:Standard, navigationOptions: {
-            tabBarLabel: 'Standard Meassurement',
+            tabBarLabel: 'Imperial Meassurement',
+            justifyContent: 'center',
+            alignItems: 'center',
             activeColor: '#ff0000',
             inactiveColor: '#000000',
             barStyle: {backgroundColor: '#67baf6'},
             tabBarIcon:()=>(
                 <View>
-                    <Icon name={'standard measurement'} size={25} style={{color: '#ff0000'}}/>
+                    <Text style={{fontSize: 20, color: '#ff0000'}}>BI</Text>
                 </View>
-            )}
+            )
+            }
         },
         Metric:{screen:Metric, navigationOptions: {
             tabBarLabel: 'Metric Measurement',
@@ -50,9 +56,10 @@ const BtTab=createMaterialBottomTabNavigator(
             barStyle: {backgroundColor: '#67baf6'},
             tabBarIcon:()=>(
                 <View>
-                    <Icon name={'Metric measurement'} size={25} style={{color: '#ff0000'}}/>
+                    <Text style={{fontSize: 20, color: '#ff0000'}}>SI</Text>
                 </View>
-            )}
+            )
+            }
         }
     }
 );
