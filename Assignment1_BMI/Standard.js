@@ -6,7 +6,7 @@ export default class Standard extends Component {
     {
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'red'}}>Standard Measurement Screen</Text>
+                <Text style={{fontSize: 30, fontWeight: 'bold'}}>Imperial Measurement</Text>
             </View>
         );
     }

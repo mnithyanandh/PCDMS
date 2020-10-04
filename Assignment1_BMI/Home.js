@@ -12,7 +12,8 @@ class Home extends Component {
     {
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'red'}}>BMI Calculator Home Screen</Text>
+                <Text style={{fontSize: 30, color: 'black', fontWeight: 'bold'}}>BMI Calculator</Text>
+                <Text style={{fontSize: 15, color: 'red', alignItems: 'center', justifyContent: 'center'}}>Select your type of BMI Calculation from the below tabs:</Text>
             </View>
         );
     }
@@ -30,7 +31,7 @@ const BtTab=createMaterialBottomTabNavigator(
             barStyle: {backgroundColor: '#67baf6'},
             tabBarIcon:()=>(
                 <View>
-                    <Icon name={'home'} size={25} style={{color: '#ff0000'}}/>
+                    <Icon name={'home'} size={25} fontWeight={'bold'}/>
                 </View>
             )
             }
@@ -44,7 +45,7 @@ const BtTab=createMaterialBottomTabNavigator(
             barStyle: {backgroundColor: '#67baf6'},
             tabBarIcon:()=>(
                 <View>
-                    <Text style={{fontSize: 20, color: '#ff0000'}}>BI</Text>
+                    <Text style={{fontSize: 20, fontWeight: 'bold'}}>BI</Text>
                 </View>
             )
             }
@@ -56,7 +57,7 @@ const BtTab=createMaterialBottomTabNavigator(
             barStyle: {backgroundColor: '#67baf6'},
             tabBarIcon:()=>(
                 <View>
-                    <Text style={{fontSize: 20, color: '#ff0000'}}>SI</Text>
+                    <Text style={{fontSize: 20, fontWeight: 'bold'}}>SI</Text>
                 </View>
             )
             }

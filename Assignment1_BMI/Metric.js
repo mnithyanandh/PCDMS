@@ -6,7 +6,7 @@ export default class Metric extends Component {
     {
         return(
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'red'}}>Metric Measurement Screen</Text>
+                <Text style={{fontSize: 30, fontWeight: 'bold'}}>Metric Measurement</Text>
             </View>
         );
     }
