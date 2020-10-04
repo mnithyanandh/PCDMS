@@ -125,7 +125,7 @@ const styles = StyleSheet.create(
             color: 'black'
          },
         submit: {
-            backgroundColor: '#ff6666',
+            backgroundColor: '#00CED1',
             padding: 10,
             margin: 15,
             height: 40,
