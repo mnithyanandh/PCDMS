@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import {View, Image, ImageBackground} from 'react-native';
 
 // Declare soem global variables for storing the location of the background image:
-var background = ('./background.png');
-var logo_icon = ('./712_logo.png')
+var background = require('./background.png');
+var logo_icon = require('./712_logo.png')
 
 // Declare the main class for the splash screen:
 export default class Splash extends Component{
@@ -12,15 +12,22 @@ export default class Splash extends Component{
     // Initialize render:
     render(){
 
-        // Initialize the ImageBackground Component:
+        // Add return function to display the backgroud and logo:
+        return(
+            // Initialize the ImageBackground Component:
         <ImageBackground
         // Add info about the background picture:
-            source = {background}
+            source = 
+            {
+                {
+                    background
+                }
+            }
             style = 
             {
                 {
-                    height = '100%', 
-                    width = '100%'
+                    height: '100%', 
+                    width: '100%'
                 }
             }>
                 {/* Declare View Component overlaying the ImageBackground */}
@@ -39,15 +46,21 @@ export default class Splash extends Component{
                     <Image 
                     
                     // Add info about the logo
-                    source = {logo_icon}
+                    source = 
+                    {
+                        {
+                            logo_icon
+                        }
+                    }
                     style = 
                     {
                         {
-                            height: 100,
-                            width: 100
+                            height: '100%',
+                            width: '100%'
                         }
                     }></Image>
                 </View> 
         </ImageBackground>
+        );
     }
 }
