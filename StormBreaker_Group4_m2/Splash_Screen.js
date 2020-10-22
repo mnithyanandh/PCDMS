@@ -37,6 +37,7 @@ export default class Splash_Screen extends Component{
                             flex: 1,
                             alignItems: 'center',
                             justifyContent: 'center'
+                            
                         }
                     }>
                         {/* Declare the Image Component overlaying the View controller for the logo placement */}
@@ -49,11 +50,11 @@ export default class Splash_Screen extends Component{
                         style = 
                         {
                             {
-                                height: '70%',
-                                width: '70%'
+                                height: '40%',
+                                width: '40%'
                             }
                         }></Image>
-                        
+
                         {/* Declare an ActivityIndicator below the Logo */}
                         <ActivityIndicator
                         // Add info about the spinner:
