@@ -20,7 +20,7 @@ class Welcome_Screen extends Component {
 }
 const BtTab=createMaterialBottomTabNavigator(
     {
-        Search_Screen:{screen:Search_Screen, navigationOptions: {
+        Search:{screen:Search_Screen, navigationOptions: {
             tabBarLabel: 'Search A Patient',
             justifyContent: 'center',
             fontSize: 25,
@@ -35,7 +35,7 @@ const BtTab=createMaterialBottomTabNavigator(
             )
             }
         },
-        Add_Screen:{screen:Add_Screen, navigationOptions: {
+        Add:{screen:Add_Screen, navigationOptions: {
             tabBarLabel: 'Add New Patient',
             justifyContent: 'center',
             fontSize: 25,
@@ -50,7 +50,7 @@ const BtTab=createMaterialBottomTabNavigator(
             )
             }
         },
-        ActivePatients_Screen:{screen:ActivePatients_Screen, navigationOptions: {
+        Active_Patients:{screen:ActivePatients_Screen, navigationOptions: {
             tabBarLabel: 'View Active Cases',
             activeColor: '#ff0000',
             inactiveColor: '#000000',

@@ -10,4 +10,5 @@ class Search_Screen extends Component {
             </View>
         );
     }
-}
+};
+export default Search_Screen

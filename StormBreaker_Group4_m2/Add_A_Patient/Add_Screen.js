@@ -10,4 +10,5 @@ class Add_Screen extends Component {
             </View>
         );
     }
-}
+};
+export default Add_Screen

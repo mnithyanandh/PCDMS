@@ -10,4 +10,5 @@ class ActivePatients_Screen extends Component {
             </View>
         );
     }
-}
+};
+export default ActivePatients_Screen
