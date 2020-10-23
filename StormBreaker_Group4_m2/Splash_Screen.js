@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import {View,ImageBackground, Image, ActivityIndicator, Text} from 'react-native';
 
-// Declare soem global variables for storing the location of the background image:
+// Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
 var logo_icon = require('./712_logo.png');
 
