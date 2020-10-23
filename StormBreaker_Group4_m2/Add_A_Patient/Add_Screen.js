@@ -31,4 +31,15 @@ const styles = StyleSheet.create({
     },
 });
 
+
+{/* <Toolbar>
+    <ToolbarBackAction
+        onPress={this._goBack}/>
+    <ToolbarContent
+        title="Title"
+        subtitle="Subtitle"/>
+    <ToolbarAction icon="search" onPress={this._onSearch} />
+    <ToolbarAction icon="more-vert" onPress={this._onMore} />
+</Toolbar> */}
+
 export default Add_Screen
