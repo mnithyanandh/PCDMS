@@ -50,24 +50,31 @@ export default class Splash_Screen extends Component{
                         style = 
                         {
                             {
+                                alignContent: 'center',
                                 height: '40%',
-                                width: '40%'
+                                width: '50%'
                             }
                         }></Image>
-
                         {/* Declare an ActivityIndicator below the Logo */}
                         <ActivityIndicator
                         // Add info about the spinner:
                         size = "large"
                         color = "black"
                         animating = 'true'
+                        style = 
+                        {
+                            {
+                                flex: 1,
+                            }
+                            
+                        }
                         >
                         </ActivityIndicator>
                         <Text
                         style = 
                         {
                             {
-                                flex: 1,
+                                flexWrap: 'wrap',
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 fontSize: 25,
