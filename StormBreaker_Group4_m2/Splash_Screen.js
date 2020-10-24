@@ -61,13 +61,6 @@ export default class Splash_Screen extends Component{
                         size = "large"
                         color = "black"
                         animating = 'true'
-                        style = 
-                        {
-                            {
-                                flex: 1,
-                            }
-                            
-                        }
                         >
                         </ActivityIndicator>
                         <Text
