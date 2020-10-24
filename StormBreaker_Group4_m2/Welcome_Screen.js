@@ -8,9 +8,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import Search_Screen from './Search_A_Patient/Search_Screen';
+import App from './Search_A_Patient/Search_Screen';
 import Add_Screen from './Add_A_Patient/Add_Screen';
 import ActivePatients_Screen from './Active_Patient_Cases/ActivePatients_Screen';
+import { color } from 'react-native-reanimated';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
@@ -47,9 +48,17 @@ class Welcome_Screen extends Component {
                     </Text>
                     <Button 
                         style = {styles.help}
-                        title= {"Help/Contact Us"}
-                        type={"outline"}
-                        raised={"true"}>     
+                        color = "#000000"
+                        title= "Help/Contact Us"
+                        type = "outline"
+                        raised = {true}>     
+                    </Button>
+                    <Button 
+                        style = {styles.logout}
+                        color = "#000000"
+                        title = "Logout"
+                        type = "outline"
+                        raised = {true}>     
                     </Button>
                 </View>
             </ImageBackground>
@@ -74,7 +83,7 @@ const BtTab=createMaterialBottomTabNavigator(
             )
             }
         },
-        Search:{screen:Search_Screen, navigationOptions: {
+        Search:{screen:App, navigationOptions: {
             tabBarLabel: 'Search Patient',
             justifyContent: 'center',
             fontSize: 30,
@@ -125,7 +134,7 @@ const BtTab=createMaterialBottomTabNavigator(
 const styles = StyleSheet.create({
     
     welcome_view: {
-        flex: 0.8,
+        flex: 0.9,
         justifyContent: 'space-around', 
         alignItems: 'center'
     },
@@ -179,6 +188,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    logout: {
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 export default createAppContainer(BtTab);
