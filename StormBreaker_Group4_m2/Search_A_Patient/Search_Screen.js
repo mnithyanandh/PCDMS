@@ -89,14 +89,6 @@ class Search_Screen extends Component {
                 style = {{ height: '100%', width: '100%'}}>
                     <View style={styles.welcome_options_c}>
                         <Text style={styles.search_render_text}>Search a Patient</Text>
-                        <View>
-                            <TouchableOpacity onPress={()=>{}}>
-                                <View style={{alignSelf: 'flex-start' }}>
-                                    <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'}/>
-                                    <Text>Logout</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
                     </View>
                     <View style={styles.search_tag}>
                         <Fragment>
@@ -245,6 +237,15 @@ export default class App extends Component {
     <TouchableOpacity onPress={()=>{}}>
         <View style={{marginLeft: 80}}>
             <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'} marginTop={10}/>
+            <Text>Logout</Text>
+        </View>
+    </TouchableOpacity>
+</View> */}
+
+{/* <View>
+    <TouchableOpacity onPress={()=>{}}>
+        <View style={{alignSelf: 'flex-start' }}>
+            <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'}/>
             <Text>Logout</Text>
         </View>
     </TouchableOpacity>

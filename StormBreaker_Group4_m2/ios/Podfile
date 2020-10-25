@@ -1,3 +1,4 @@
+project '/Volumes/SANDISK_MAC/MAPD_GITHUB/MAPD_F2020/StormBreaker_Group4_m2/ios/StormBreaker_Group4_m2.xcodeproj'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
