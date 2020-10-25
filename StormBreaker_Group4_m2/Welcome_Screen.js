@@ -12,6 +12,7 @@ import App from './Search_A_Patient/Search_Screen';
 import Add_Screen from './Add_A_Patient/Add_Screen';
 import ActivePatients_Screen from './Active_Patient_Cases/ActivePatients_Screen';
 import { color } from 'react-native-reanimated';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
@@ -23,8 +24,8 @@ class Welcome_Screen extends Component {
                 // Add info about the background picture:
                 source = { background }
                 style = {{ height: '100%', width: '100%'}}>
-                <View>
-                <Text style={styles.welcome_tag}>Welcome</Text>
+                <View style={styles.welcome_options_c}>
+                    <Text style={styles.welcome_tag}>Welcome</Text>
                 </View>
                 <View style={styles.welcome_view}>
                     <Text style={styles.welcome_title}>
@@ -139,12 +140,11 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     welcome_tag: {
-        marginTop: 100,
+        marginTop: 50,
         fontSize: 50,
         color: 'red',
         fontWeight: 'bold',
         justifyContent: 'center',
-        alignItems: 'center',
         textAlign: 'center',
     },
     welcome_title: {
@@ -184,6 +184,16 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         alignContent: 'center'
     },
+    welcome_options_c: {
+        marginTop: 50,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        alignContent: 'center'
+    },
     help: {
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -196,5 +206,3 @@ const styles = StyleSheet.create({
     }
 })
 export default createAppContainer(BtTab);
-
-{/*  */}

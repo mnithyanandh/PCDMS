@@ -87,75 +87,85 @@ class Search_Screen extends Component {
             <ImageBackground
                 source = { background }
                 style = {{ height: '100%', width: '100%'}}>
-                <View style={styles.search_tag}>
-                    <Text style={styles.search_render_text}>Search a Patient</Text>
-                    <Fragment>
-                        <SearchableDropdown
-                            onItemSelect={(item) => {
-                                const items = this.state.selectedItems;
-                                items.push(item)
-                                this.setState({ selectedItems: items });
-                            }}
-                            containerStyle={{ padding: 15 }}
-                            onRemoveItem={
-                                (item, index) => {
-                                const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-                                this.setState({ selectedItems: items });
-                            }}
-                            itemStyle={{
-                            padding: 10,
-                            marginTop: 2,
-                            backgroundColor: '#ddd',
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                            borderRadius: 5,
-                            }}
-                            itemTextStyle={
-                                { color: '#5a5a5a' }
-                            }
-                            itemsContainerStyle={
-                                { maxHeight: 300 }
-                            }
-                            items={items}
-                            defaultIndex={2}
-                            autoFocus={true}
-                            resetValue={false}
-                            textInputProps={
-                            {
-                                placeholder: "Enter patient's name here:",
-                                underlineColorAndroid: "black",
-                                style: {
-                                    padding: 12,
-                                    borderWidth: 1,
-                                    color: "#5a5a5a",
-                                    borderColor: '#000000',
-                                    borderRadius: 7,
-                                },
-                                //onTextChange: text => alert(text)
-                            }
-                            }
-                            listProps={
-                            {
-                                nestedScrollEnabled: true,
-                            }
-                            }
-                        />
-                    </Fragment>
-                    <View style={styles.container}>
-                        <Button style={styles.search_button}
-                            title="Search"
-                            onPress={() => this.props.navigation.navigate('View')} 
-                            borderColor="#000000"
-                            raised = {true}/>
+                    <View style={styles.welcome_options_c}>
+                        <Text style={styles.search_render_text}>Search a Patient</Text>
+                        <View>
+                            <TouchableOpacity onPress={()=>{}}>
+                                <View style={{alignSelf: 'flex-start' }}>
+                                    <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'}/>
+                                    <Text>Logout</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                </View>
+                    <View style={styles.search_tag}>
+                        <Fragment>
+                            <SearchableDropdown
+                                onItemSelect={(item) => {
+                                    const items = this.state.selectedItems;
+                                    items.push(item)
+                                    this.setState({ selectedItems: items });
+                                }}
+                                containerStyle={{ padding: 15 }}
+                                onRemoveItem={
+                                    (item, index) => {
+                                    const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
+                                    this.setState({ selectedItems: items });
+                                }}
+                                itemStyle={{
+                                padding: 10,
+                                marginTop: 2,
+                                backgroundColor: '#ddd',
+                                borderColor: '#000000',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                }}
+                                itemTextStyle={
+                                    { color: '#5a5a5a' }
+                                }
+                                itemsContainerStyle={
+                                    { maxHeight: 300 }
+                                }
+                                items={items}
+                                defaultIndex={2}
+                                autoFocus={true}
+                                resetValue={false}
+                                textInputProps={
+                                {
+                                    placeholder: "Enter patient's name here:",
+                                    underlineColorAndroid: "black",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        color: "#5a5a5a",
+                                        borderColor: '#000000',
+                                        borderRadius: 7,
+                                    },
+                                    //onTextChange: text => alert(text)
+                                }
+                                }
+                                listProps={
+                                {
+                                    nestedScrollEnabled: true,
+                                }
+                                }
+                            />
+                        </Fragment>
+                        <View style={styles.container}>
+                            <Button style={styles.search_button}
+                                title="Search"
+                                onPress={() => this.props.navigation.navigate('View')} 
+                                borderColor="#000000"
+                                raised = {true}/>
+                        </View>
+                    </View>
             </ImageBackground>
         );
     }
 };
 const styles = StyleSheet.create({
     search_tag: {
-        marginTop: 70,
+        marginTop: 30,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -165,6 +175,8 @@ const styles = StyleSheet.create({
     search_render_text: {
         fontSize: 25,
         fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center'
     },
     container: {
         backgroundColor: '#ecf0f1'
@@ -186,6 +198,16 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
     },
+    welcome_options_c: {
+        height: 50,
+        width: 400,
+        marginTop: 50,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        alignItems: 'stretch'
+    }
 })
 
 class View_Patient extends Component {
@@ -217,3 +239,13 @@ export default class App extends Component {
         return <AppContainer />;  
     }  
 }  
+
+
+{/* <View>
+    <TouchableOpacity onPress={()=>{}}>
+        <View style={{marginLeft: 80}}>
+            <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'} marginTop={10}/>
+            <Text>Logout</Text>
+        </View>
+    </TouchableOpacity>
+</View> */}
