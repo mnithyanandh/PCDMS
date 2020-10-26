@@ -198,7 +198,8 @@ const styles = StyleSheet.create({
         fontWeight: '600', 
         color: '#0022E1',
         flexDirection: 'row',
-        alignItems: 'stretch'
+        justifyContent:'center',
+        alignItems: 'center'
     }
 })
 

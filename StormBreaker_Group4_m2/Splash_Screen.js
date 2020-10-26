@@ -1,6 +1,8 @@
 // Import the splash screen requirement classes
 import React, {Component} from 'react';
 import {View,ImageBackground, Image, ActivityIndicator, Text} from 'react-native';
+import { NavigationActions } from 'react-navigation';
+import Authentication from './Authentication/Auth_Screen';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
@@ -8,7 +10,15 @@ var logo_icon = require('./712_logo.png');
 
 // Declare the main class for the splash screen:
 export default class Splash_Screen extends Component{
-    
+    // Verify Splasg Screen mount time
+    componentDidMount(){
+        setTimeout(() => {
+            NavigationActions.navigate(Authentication);
+        }, 2500);
+    }
+    componentWillUnmount(){
+        clearTimeout(this.timeoutHandle);
+    }
     // Initialize render:
     render()
     {
@@ -78,4 +88,4 @@ export default class Splash_Screen extends Component{
             </ImageBackground>
         );
     }
-}
+};
