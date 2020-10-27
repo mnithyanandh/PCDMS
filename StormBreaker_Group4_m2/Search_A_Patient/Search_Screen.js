@@ -12,6 +12,7 @@ import SearchableDropdown from 'react-native-searchable-dropdown';
 import { Icon } from 'react-native-elements';
 import { Navigation, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import View_Patient from './View_Patient';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
@@ -65,95 +66,78 @@ var items = [
         name: 'Amelia, Armstrong | 88/21/4432 | 590-851-6165 | Pediatrics',
     },
 ];
-class Search_Screen extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          selectedItems: [
-            {
-              id: 7,
-              name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
-            },
-            {
-                id: 8,
-                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
-            }
-          ]
-        }
-    }
-    render()
-    {
-        return(
-            <ImageBackground
-                source = { background }
-                style = {{ height: '100%', width: '100%'}}>
-                    <View style={styles.welcome_options_c}>
-                        <Text style={styles.search_render_text}>Search a Patient</Text>
+
+function Search_Screen({navigation}) {
+    return(
+        <ImageBackground
+            source = { background }
+            style = {{ height: '100%', width: '100%'}}>
+                <View style={styles.welcome_options_c}>
+                    <Text style={styles.search_render_text}>Search a Patient</Text>
+                </View>
+                <View style={styles.search_tag}>
+                    <Fragment>
+                        <SearchableDropdown
+                            onItemSelect={(item) => {
+                                const items = this.state.selectedItems;
+                                items.push(item)
+                                this.setState({ selectedItems: items });
+                            }}
+                            containerStyle={{ padding: 15 }}
+                            onRemoveItem={
+                                (item, index) => {
+                                const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
+                                this.setState({ selectedItems: items });
+                            }}
+                            itemStyle={{
+                            padding: 10,
+                            marginTop: 2,
+                            backgroundColor: '#ddd',
+                            borderColor: '#000000',
+                            borderWidth: 1,
+                            borderRadius: 5,
+                            }}
+                            itemTextStyle={
+                                { color: '#5a5a5a' }
+                            }
+                            itemsContainerStyle={
+                                { maxHeight: 300 }
+                            }
+                            items={items}
+                            defaultIndex={2}
+                            autoFocus={true}
+                            resetValue={false}
+                            textInputProps={
+                            {
+                                placeholder: "Enter patient's name here:",
+                                underlineColorAndroid: "black",
+                                style: {
+                                    padding: 12,
+                                    borderWidth: 1,
+                                    color: "#5a5a5a",
+                                    borderColor: '#000000',
+                                    borderRadius: 7,
+                                },
+                                //onTextChange: text => alert(text)
+                            }
+                            }
+                            listProps={
+                            {
+                                nestedScrollEnabled: true,
+                            }
+                            }
+                        />
+                    </Fragment>
+                    <View style={styles.container}>
+                        <Button style={styles.search_button}
+                            title="Search"
+                            onPress={() => this.props.navigation.navigate('Patient Records')} 
+                            borderColor="#000000"
+                            raised = {true}/>
                     </View>
-                    <View style={styles.search_tag}>
-                        <Fragment>
-                            <SearchableDropdown
-                                onItemSelect={(item) => {
-                                    const items = this.state.selectedItems;
-                                    items.push(item)
-                                    this.setState({ selectedItems: items });
-                                }}
-                                containerStyle={{ padding: 15 }}
-                                onRemoveItem={
-                                    (item, index) => {
-                                    const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-                                    this.setState({ selectedItems: items });
-                                }}
-                                itemStyle={{
-                                padding: 10,
-                                marginTop: 2,
-                                backgroundColor: '#ddd',
-                                borderColor: '#000000',
-                                borderWidth: 1,
-                                borderRadius: 5,
-                                }}
-                                itemTextStyle={
-                                    { color: '#5a5a5a' }
-                                }
-                                itemsContainerStyle={
-                                    { maxHeight: 300 }
-                                }
-                                items={items}
-                                defaultIndex={2}
-                                autoFocus={true}
-                                resetValue={false}
-                                textInputProps={
-                                {
-                                    placeholder: "Enter patient's name here:",
-                                    underlineColorAndroid: "black",
-                                    style: {
-                                        padding: 12,
-                                        borderWidth: 1,
-                                        color: "#5a5a5a",
-                                        borderColor: '#000000',
-                                        borderRadius: 7,
-                                    },
-                                    //onTextChange: text => alert(text)
-                                }
-                                }
-                                listProps={
-                                {
-                                    nestedScrollEnabled: true,
-                                }
-                                }
-                            />
-                        </Fragment>
-                        <View style={styles.container}>
-                            <Button style={styles.search_button}
-                                title="Search"
-                                onPress={() => this.props.navigation.navigate('View')} 
-                                borderColor="#000000"
-                                raised = {true}/>
-                        </View>
-                    </View>
-            </ImageBackground>
-        );
-    }
+                </View>
+        </ImageBackground>
+    )
 };
 const styles = StyleSheet.create({
     search_tag: {
@@ -203,31 +187,17 @@ const styles = StyleSheet.create({
     }
 })
 
-class View_Patient extends Component {
-    render()
-    {
-        return(
-            <ImageBackground
-                source={ background }
-                style={{height: '100%',width: '100%'}}>
-                    <View style={styles.view_tag}>
-                        <Text style={styles.view_render_text}>Patient Records</Text>
-                    </View>
-            </ImageBackground>
-        );
-    }
-};
 const AppNavigator = createStackNavigator(  
     {  
         Search: Search_Screen,  
-        View: View_Patient  
+        'Patient Records': View_Patient  
     },  
     {  
         initialRouteName: "Search"  
     }  
 );  
 const AppContainer = createAppContainer(AppNavigator); 
-export default class App extends Component {  
+export default class SearchApp extends Component {  
     render() {  
         return <AppContainer />;  
     }  
@@ -251,3 +221,18 @@ export default class App extends Component {
         </View>
     </TouchableOpacity>
 </View> */}
+/* constructor(props){
+    super(props);
+    this.state = {
+        selectedItems: [
+        {
+            id: 7,
+            name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
+        },
+        {
+            id: 8,
+            name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
+        }
+        ]
+    }
+}, */

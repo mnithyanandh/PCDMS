@@ -10,14 +10,17 @@ import {
     ActivityIndicator,
     ImageBackground 
 } from 'react-native';
-import { Navigation, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import Auth_VerifiedApp from './Auth_Verified';
+import Auth_Denied from './Auth_Denied';
+import WelcomeApp from '../Welcome_Screen';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
 var logo_icon = require('../712_logo.png');
 
-class Auth_Screen extends Component {
+function Auth_Screen ({navigation}) {
     // Declare a states for Access Code input from user  
     state={
         access_code: ''
@@ -50,10 +53,10 @@ class Auth_Screen extends Component {
                             onPress={() => 
                                 {
                                     if(this.access_code == "yes"){
-                                        this.props.navigation.navigate('Verified')
+                                        this.props.navigation.navigate('ADthentication')
                                     }
                                     else{
-                                        this.props.navigation.navigate('Denied')
+                                        this.props.navigation.navigate('AVuthentication')
                                     }
                                 }}
                             borderColor="#000000"
@@ -69,56 +72,11 @@ class Auth_Screen extends Component {
     }
 };
 
-class Auth_Verified extends Component {
-    render()
-    {
-        return(
-            <ImageBackground
-                source={ background }
-                style={{height: '100%',width: '100%'}}>
-                    <View style={styles.auth_verified_logo}>
-                    <ActivityIndicator
-                        // Add info about the spinner:
-                        size = "large"
-                        color = "black"
-                        animating = 'true'>
-                        </ActivityIndicator>
-                    </View>
-                    <View style={styles.auth_verified_tag}>
-                        <Text style={styles.auth_verified_render_text}>Access Verified. Logging you in...</Text>
-                    </View>
-            </ImageBackground>
-        );
-    }
-};
-class Auth_Denied extends Component {
-    render()
-    {
-        return(
-            <ImageBackground
-                source={ background }
-                style={{height: '100%',width: '100%'}}>
-                    <View style = {styles.auth_denied_logo}>
-                    <ActivityIndicator
-                        // Add info about the spinner:
-                        size = "large"
-                        color = "black"
-                        animating = 'true'>
-                        </ActivityIndicator>
-                    </View>
-                    <View style={styles.auth_denied_tag}>
-                        <Text style={styles.auth_denied_render_text}>Access denied, try again!</Text>
-                    </View>
-            </ImageBackground>
-        );
-    }
-};
-
 const AppNavigator = createStackNavigator(  
     {  
         Authentication: Auth_Screen,
-        Verified: Auth_Verified,
-        Denied: Auth_Denied    
+        'AVuthentication': Auth_VerifiedApp,
+        'ADthentication': Auth_Denied,
     },  
     {  
         initialRouteName: "Authentication"  
@@ -166,44 +124,10 @@ const styles = StyleSheet.create({
     button_container: {
         backgroundColor: '#ecf0f1'
     },
-    auth_verified_tag: {
-        marginTop: 70,
-        fontSize: 50,
-        fontWeight: 'bold',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center'
-    },
-    auth_verified_render_text: {
-        fontSize: 25,
-        fontWeight: 'bold'
-    },
-    auth_verified_logo: {
-        flex: 0.4,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    auth_denied_logo: {
-        flex: 0.4,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    auth_denied_tag: {
-        marginTop: 70,
-        fontSize: 50,
-        fontWeight: 'bold',
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center'
-    },
-    auth_denied_render_text: {
-        fontSize: 25,
-        fontWeight: 'bold'
-    },
 });
 
 const AppContainer = createAppContainer(AppNavigator); 
-export default class App extends Component {  
+export default class Auth_ScreenApp extends Component {  
     render() {  
         return <AppContainer />;  
     }  
