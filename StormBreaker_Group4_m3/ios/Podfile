@@ -2,14 +2,12 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 project '/Volumes/SANDISK_MAC/MAPD_GITHUB/MAPD_F2020/StormBreaker_Group4_m3/ios/StormBreaker_Group4_m3.xcodeproj'
 
-platform :ios, '11.0'
+platform :ios, '13.2.2'
 
 target 'StormBreaker_Group4_m3' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'StormBreaker_Group4_m3Tests' do
     inherit! :complete
