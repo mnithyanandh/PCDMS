@@ -118,7 +118,7 @@ function Search_Screen({navigation}) {
                                     borderColor: '#000000',
                                     borderRadius: 7,
                                 },
-                                //onTextChange: text => alert(text)
+                                onTextChange: text => alert(text)
                             }
                             }
                             listProps={
@@ -198,6 +198,23 @@ const AppNavigator = createStackNavigator(
 );  
 const AppContainer = createAppContainer(AppNavigator); 
 export default class SearchApp extends Component {  
+    
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedItems: [
+            {
+                id: 7,
+                name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
+            },
+            {
+                id: 8,
+                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
+            }
+            ]
+        }
+    }
+    
     render() {  
         return <AppContainer />;  
     }  
