@@ -9,7 +9,7 @@ import {
     TextInput,
     ImageBackground} from 'react-native';
 import SearchableDropdown from 'react-native-searchable-dropdown';
-import { createAppContainer } from 'react-navigation-native';
+import { createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import { Navigation, createStackNavigator } from 'react-navigation-stack';
 import View_Patient from './View_Patient';
@@ -67,77 +67,94 @@ var items = [
     },
 ];
 
-function Search_Screen({navigation}) {
-    return(
-        <ImageBackground
-            source = { background }
-            style = {{ height: '100%', width: '100%'}}>
-                <View style={styles.welcome_options_c}>
-                    <Text style={styles.search_render_text}>Search a Patient</Text>
-                </View>
-                <View style={styles.search_tag}>
-                    <Fragment>
-                        <SearchableDropdown
-                            onItemSelect={(item) => {
-                                const items = this.state.selectedItems;
-                                items.push(item)
-                                this.setState({ selectedItems: items });
-                            }}
-                            containerStyle={{ padding: 15 }}
-                            onRemoveItem={
-                                (item, index) => {
-                                const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-                                this.setState({ selectedItems: items });
-                            }}
-                            itemStyle={{
-                            padding: 10,
-                            marginTop: 2,
-                            backgroundColor: '#ddd',
-                            borderColor: '#000000',
-                            borderWidth: 1,
-                            borderRadius: 5,
-                            }}
-                            itemTextStyle={
-                                { color: '#5a5a5a' }
-                            }
-                            itemsContainerStyle={
-                                { maxHeight: 300 }
-                            }
-                            items={items}
-                            defaultIndex={2}
-                            autoFocus={true}
-                            resetValue={false}
-                            textInputProps={
-                            {
-                                placeholder: "Enter patient's name here:",
-                                underlineColorAndroid: "black",
-                                style: {
-                                    padding: 12,
-                                    borderWidth: 1,
-                                    color: "#5a5a5a",
-                                    borderColor: '#000000',
-                                    borderRadius: 7,
-                                },
-                                //onTextChange: text => alert(text)
-                            }
-                            }
-                            listProps={
-                            {
-                                nestedScrollEnabled: true,
-                            }
-                            }
-                        />
-                    </Fragment>
-                    <View style={styles.container}>
-                        <Button style={styles.search_button}
-                            title="Search"
-                            onPress={() => this.props.navigation.navigate('Patient Records')} 
-                            borderColor="#000000"
-                            raised = {true}/>
+class Search_Screen extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedItems: [
+            {
+                id: 7,
+                name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
+            },
+            {
+                id: 8,
+                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
+            }
+            ]
+        }
+    };
+    render(){
+        return(
+            <ImageBackground
+                source = { background }
+                style = {{ height: '100%', width: '100%'}}>
+                    <View style={styles.welcome_options_c}>
+                        <Text style={styles.search_render_text}>Search a Patient</Text>
                     </View>
-                </View>
-        </ImageBackground>
-    )
+                    <View style={styles.search_tag}>
+                        <Fragment>
+                            <SearchableDropdown
+                                onItemSelect={(item) => {
+                                    const items = this.state.selectedItems;
+                                    items.push(item)
+                                    this.setState({ selectedItems: items });
+                                }}
+                                containerStyle={{ padding: 15 }}
+                                onRemoveItem={
+                                    (item, index) => {
+                                    const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
+                                    this.setState({ selectedItems: items });
+                                }}
+                                itemStyle={{
+                                padding: 10,
+                                marginTop: 2,
+                                backgroundColor: '#ddd',
+                                borderColor: '#000000',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                }}
+                                itemTextStyle={
+                                    { color: '#5a5a5a' }
+                                }
+                                itemsContainerStyle={
+                                    { maxHeight: 300 }
+                                }
+                                items={items}
+                                defaultIndex={2}
+                                autoFocus={true}
+                                resetValue={false}
+                                textInputProps={
+                                {
+                                    placeholder: "Enter patient's name here:",
+                                    underlineColorAndroid: "black",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        color: "#5a5a5a",
+                                        borderColor: '#000000',
+                                        borderRadius: 7,
+                                    },
+                                    //onTextChange: text => alert(text)
+                                }
+                                }
+                                listProps={
+                                {
+                                    nestedScrollEnabled: true,
+                                }
+                                }
+                            />
+                        </Fragment>
+                        <View style={styles.container}>
+                            <Button style={styles.search_button}
+                                title="Search"
+                                onPress={() => this.props.navigation.navigate('Patient_Records')} 
+                                borderColor="#000000"
+                                raised = {true}/>
+                        </View>
+                    </View>
+            </ImageBackground>
+        )
+    }
 };
 const styles = StyleSheet.create({
     search_tag: {
@@ -185,38 +202,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems: 'center'
     }
-})
-
-const AppNavigator = createStackNavigator(  
-    {  
-        Search: Search_Screen,  
-        'Patient Records': View_Patient  
-    },  
-    {  
-        initialRouteName: "Search"
-    }  
-);  
-const AppContainer = createAppContainer(AppNavigator); 
-class SearchApp extends React.Component {   
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         selectedItems: [
-    //         {
-    //             id: 7,
-    //             name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
-    //         },
-    //         {
-    //             id: 8,
-    //             name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
-    //         }
-    //         ]
-    //     }
-    // };
-    render() {  
-        return <AppContainer />;  
-    }  
-}  
+});
 export default Search_Screen
 
 

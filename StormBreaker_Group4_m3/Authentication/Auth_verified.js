@@ -6,8 +6,8 @@ import {
     StyleSheet,
     ImageBackground 
 } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createAppContainer } from '@react-navigation/native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import WelcomeApp from '../Welcome_Screen';
 
 var background = require('../background.png');
@@ -55,19 +55,4 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 })
-const AppNavigator = createStackNavigator(  
-    {  
-        Verified: Auth_Verified,
-        'Home': WelcomeApp
-    },  
-    {  
-        initialRouteName: "Verified"  
-    }  
-); 
-const AppContainer = createAppContainer(AppNavigator); 
-class Auth_VerifiedApp extends Component {  
-    render() {  
-        return <AppContainer />;  
-    }  
-} 
 export default Auth_Verified

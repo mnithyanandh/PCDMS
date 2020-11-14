@@ -10,8 +10,8 @@ import {
     ActivityIndicator,
     ImageBackground 
 } from 'react-native';
-import { createAppContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import Auth_VerifiedApp from './Auth_verified';
 import Auth_Denied from './Auth_denied';
 
@@ -19,7 +19,7 @@ import Auth_Denied from './Auth_denied';
 var background = require('../background.png');
 var logo_icon = require('../712_logo.png');
 
-function Auth_Screen ({navigation}) {
+class Auth_Screen extends Component {
     // Declare a states for Access Code input from user  
     state={
         access_code: ''
@@ -70,18 +70,6 @@ function Auth_Screen ({navigation}) {
         );
     }
 };
-
-const AppNavigator = createStackNavigator(  
-    {  
-        Authentication: Auth_Screen,
-        'AVuthentication': Auth_VerifiedApp,
-        'ADthentication': Auth_Denied,
-    },  
-    {  
-        initialRouteName: "Authentication"  
-    }  
-);  
-
 const styles = StyleSheet.create({  
     auth_tag: {
         marginTop: 70,
@@ -123,12 +111,5 @@ const styles = StyleSheet.create({
     button_container: {
         backgroundColor: '#ecf0f1'
     },
-});
-
-const AppContainer = createAppContainer(AppNavigator); 
-class Auth_ScreenApp extends Component {  
-    render() {  
-        return <AppContainer />;  
-    }  
-}  
+}); 
 export default Auth_Screen

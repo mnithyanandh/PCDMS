@@ -1,8 +1,8 @@
 // Import the splash screen requirement classes
 import React, {Component, useEffect} from 'react';
 import {View,ImageBackground, Image, ActivityIndicator, Text} from 'react-native';
-import { NavigationActions } from 'react-navigation';
-import Auth_ScreenApp from './Authentication/Auth_screen';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
 // Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
@@ -13,8 +13,8 @@ export default function Splash_Screen({navigation}){
     // Verify Splasg Screen mount time
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate(Auth_ScreenApp);
-        }, 2500);
+            navigation.navigate('Authentication');
+        }, 2000);
     }, )
     // Add return function to display the backgroud and logo:
     return(
