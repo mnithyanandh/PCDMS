@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import RB from '../RadioButton';
+// import RB from '../RadioButton';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
@@ -109,10 +109,48 @@ class Add_Screen extends Component {
                     </View>
                     <View style = {styles.add_patient_Medications_area}>
                         <Text style = {styles.add_patient_Phone_Number}>Currently on Medications?:</Text>
-                        <View style={styles.container}>
+                        {/* <View style={styles.container}>
                             <RB PROP={PROP} />
-                        </View>
+                        </View> */}
                     </View>
+                    <View style = {styles.add_patient_meds_specification_area}>
+                        <Text style = {styles.add_patient_meds_lbl}>if yes, please specify:</Text>
+                        <TextInput style = {styles.add_patient_meds_specs}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'add additional info here:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_EPhone_Number_area}>
+                        <Text style = {styles.add_patient_EPhone_Number}>Emergency Phone No.:</Text>
+                        <TextInput style = {styles.add_patient_EPhone}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Phone Number'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_E_name_area}>
+                        <TextInput style = {styles.add_patient_Efirst_name}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'First Name'
+                        autoCapitalize = 'none'/>
+                        <TextInput style = {styles.add_patient_Elast_name}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Last Name'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_ERelationship_area}>
+                        <Text style = {styles.add_patient_ERelationship_Lbl}>Relationship:</Text>
+                        <TextInput style = {styles.add_patient_ERelatiopnship}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Relationship to contact:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style={styles.container}>
+                            <Button style={styles.search_button}
+                                title="Submit"
+                                onPress={() => this.props.navigation.navigate('Patient_Records')} 
+                                borderColor="#000000"
+                                raised = {true}/>
+                        </View>
                 </ScrollView>
             </ImageBackground>
         );
@@ -120,6 +158,9 @@ class Add_Screen extends Component {
 };
 
 const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#ecf0f1'
+    },
     add_render: {
         marginTop: 30,
         fontSize: 40,
@@ -128,6 +169,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
     },
+    search_button: {
+        position: 'absolute',
+        top: 20,
+        left: 40
+    },
     add_render_text: {
         fontSize: 30,
         fontWeight: 'bold',
@@ -135,7 +181,7 @@ const styles = StyleSheet.create({
     add_patient_name_area: {
         height: 50,
         width: 400,
-        marginTop: 30,
+        marginTop: 0,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -394,6 +440,105 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    add_patient_meds_specification_area: {
+        height: 180,
+        width: 400,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_meds_lbl: {
+        fontSize: 15,
+        marginLeft: 10,
+        fontWeight: 'normal',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_meds_specs: {
+        margin: 15,
+        height: 150,
+        width: 220,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_EPhone_Number_area: {
+        height: 50,
+        width: 400,
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_EPhone_Number: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_EPhone: {
+        margin: 15,
+        height: 40,
+        width: 160,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_E_name_area: {
+        height: 50,
+        width: 410,
+        marginTop: 5,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_Efirst_name: {
+        margin: 20,
+        height: 40,
+        width: 180,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Elast_name: {
+        margin: 20,
+        height: 40,
+        width: 180,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_ERelationship_area: {
+        height: 50,
+        width: 400,
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_ERelationship_Lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_ERelatiopnship: {
+        margin: 15,
+        height: 40,
+        width: 220,
+        borderWidth: 1,
+        padding: 10,
     },
 })
 
