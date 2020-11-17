@@ -8,7 +8,8 @@ import {
     Button,
     Image,
     ActivityIndicator,
-    ImageBackground 
+    ImageBackground,
+    Alert 
 } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -42,7 +43,7 @@ class Auth_Screen extends Component {
                     <View>
                         <TextInput style = {styles.auth_input}
                             underlineColorAndroid = 'transparent'
-                            placeholder = 'Enter code here'
+                            placeholder = 'Enter code here:'
                             autoCapitalize = 'none'
                             onChangeText = {this.accessHandler}/>
                     </View>
@@ -51,11 +52,28 @@ class Auth_Screen extends Component {
                             title="Verify"
                             onPress={() => 
                                 {
-                                    if(this.access_code == "yes"){
+                                    if(this.state.access_code.text = "yes"){
+                                        this.props.navigation.navigate('AVuthentication')
+                                    }
+                                    else if(this.state.access_code.text == "no"){
                                         this.props.navigation.navigate('ADthentication')
                                     }
-                                    else{
-                                        this.props.navigation.navigate('AVuthentication')
+                                    else {
+                                        Alert.alert(
+                                            "No entry detected!",
+                                            "Kindly retry your access code",
+                                            [
+                                                {
+                                                text: "Cancel",
+                                                onPress: () => console.log("Cancel Pressed"),
+                                                style: "cancel"
+                                                },
+                                                {
+                                                text: "OK",
+                                                onPress: password => console.log("OK Pressed, password: " + password)
+                                                }
+                                            ],
+                                        );
                                     }
                                 }}
                             borderColor="#000000"
