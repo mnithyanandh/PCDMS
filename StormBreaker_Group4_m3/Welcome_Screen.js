@@ -35,16 +35,16 @@ class Welcome_Screen extends Component {
                         From the below tabs, choose your preferred activity:{"\n"}
                         {"\n"}
                         <View style={styles.welcome_options_a}>
-                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}> Access Home for Login and Help using <Icon name={'home'} size={25} color={'red'}/> icon.</Text>
+                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}> Access Home for Login and Help using <Icon name={'home'} size={25} color={'red'}/> tab.</Text>
                         </View>
                         <View style={styles.welcome_options_b}>
-                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} Search for a Patient using the <Icon name={'search'} size={25} color={'red'}/> icon.</Text>
+                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} Search for a Patient using the <Icon name={'search'} size={25} color={'red'}/> tab.</Text>
                         </View>
                         <View style={styles.welcome_options_b}>
-                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} Add a new Patient using the <Icon name={'face'} size={25} color={'red'}/> icon.</Text>
+                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} Add a new Patient using the <Icon name={'face'} size={25} color={'red'}/> tab.</Text>
                         </View>
                         <View style={styles.welcome_options_b}>
-                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} View Active Cases using the <Icon name={'visibility'} size={25} color={'red'}/> icon.</Text>
+                            <Text style={{color: '#0119A0', textAlign: 'center', fontSize: 18}}>{"\n"} View Active Cases using the <Icon name={'visibility'} size={25} color={'red'}/> tab.</Text>
                         </View>
                     </Text>
                     <Button 
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     welcome_tag: {
-        marginTop: 50,
+        marginTop: 30,
         fontSize: 50,
         color: 'red',
         fontWeight: 'bold',
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         alignContent: 'center'
     },
     welcome_options_c: {
-        marginTop: 50,
+        marginTop: 5,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',

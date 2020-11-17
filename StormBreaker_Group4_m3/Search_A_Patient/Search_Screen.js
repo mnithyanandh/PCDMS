@@ -158,7 +158,7 @@ class Search_Screen extends Component {
 };
 const styles = StyleSheet.create({
     search_tag: {
-        marginTop: 30,
+        marginTop: 220,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     search_render_text: {
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center'
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     welcome_options_c: {
         height: 50,
         width: 400,
-        marginTop: 50,
+        marginTop: 20,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',

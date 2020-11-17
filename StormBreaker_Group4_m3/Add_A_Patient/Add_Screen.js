@@ -1,9 +1,20 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
+import RB from '../RadioButton';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
+const PROP = [
+	{
+		key: 'yes',
+		text: 'Yes',
+	},
+	{
+		key: 'no',
+		text: 'No',
+	}
+];
 
 class Add_Screen extends Component {
     render()
@@ -15,69 +26,94 @@ class Add_Screen extends Component {
                 <View style={styles.add_render}>
                     <Text style={styles.add_render_text}>Add a New Patient</Text>
                 </View>
-                <View style = {styles.add_patient_name_area}>
-                    <Text style = {styles.add_patient_name}>Name:</Text>
-                    <TextInput style = {styles.add_patient_first_name}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'First Name'
-                    autoCapitalize = 'none'/>
-                    <TextInput style = {styles.add_patient_last_name}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'Last Name'
-                    autoCapitalize = 'none'/>
-                </View>
-                <View style = {styles.add_patient_DOB_A_area}>
-                    <Text style = {styles.add_patient_DOB}>DOB:</Text>
-                    <TextInput style = {styles.add_patient_DOB_MM}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'MM'
-                    autoCapitalize = 'none'/>
-                    <TextInput style = {styles.add_patient_DOB_DD}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'DD'
-                    autoCapitalize = 'none'/>
-                    <TextInput style = {styles.add_patient_DOB_YYYY}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'YYYY'
-                    autoCapitalize = 'none'/>
-                    <Text style = {styles.add_patient_DOA}>DOA:</Text>
-                    <TextInput style = {styles.add_patient_DOA_Date}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'Date'
-                    autoCapitalize = 'none'/>
-                </View>
-                <View style = {styles.add_patient_Gender_area}>
-                    <Text style = {styles.add_patient_Gender}>Gender:</Text>
-                    <TextInput style = {styles.add_patient_Gender_sex}
-                    underlineColorAndroid = 'transparent'
-                    placeholder = 'Sex'
-                    autoCapitalize = 'none'/>
-                </View>
-                <View style = {styles.add_patient_Address_area}>
-                    <Text style = {styles.add_patient_Gender}>Address:</Text>
-                    <View style = {styles.add_patient_Address_Line_area}>
-                        <TextInput style = {styles.add_patient_Address_Line_entry_1}
+                <ScrollView style={styles.scrollView}>
+                    <View style = {styles.add_patient_name_area}>
+                        <Text style = {styles.add_patient_name}>Name:</Text>
+                        <TextInput style = {styles.add_patient_first_name}
                         underlineColorAndroid = 'transparent'
-                        placeholder = 'Line 1'
+                        placeholder = 'First Name'
                         autoCapitalize = 'none'/>
-                        <TextInput style = {styles.add_patient_Address_Line_entry_2}
+                        <TextInput style = {styles.add_patient_last_name}
                         underlineColorAndroid = 'transparent'
-                        placeholder = 'Line 2'
+                        placeholder = 'Last Name'
                         autoCapitalize = 'none'/>
-                        <View style = {styles.add_patient_Address_Province_area}>
-                        <TextInput style = {styles.add_patient_Address_City_entry}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'City'
-                        autoCapitalize = 'none'/>
-                        <TextInput style = {styles.add_patient_Address_Province_entry}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Province'
-                        autoCapitalize = 'none'/>
-
-                        </View>
-                        
                     </View>
-                </View>
+                    <View style = {styles.add_patient_DOB_A_area}>
+                        <Text style = {styles.add_patient_DOB}>DOB:</Text>
+                        <TextInput style = {styles.add_patient_DOB_MM}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'MM'
+                        autoCapitalize = 'none'/>
+                        <TextInput style = {styles.add_patient_DOB_DD}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'DD'
+                        autoCapitalize = 'none'/>
+                        <TextInput style = {styles.add_patient_DOB_YYYY}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'YYYY'
+                        autoCapitalize = 'none'/>
+                        <Text style = {styles.add_patient_DOA}>DOA:</Text>
+                        <TextInput style = {styles.add_patient_DOA_Date}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Date'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Gender_area}>
+                        <Text style = {styles.add_patient_Gender}>Gender:</Text>
+                        <TextInput style = {styles.add_patient_Gender_sex}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Sex'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Address_area}>
+                        <Text style = {styles.add_patient_Address_Lbl}>Address:</Text>
+                        <View style = {styles.add_patient_Address_Line_area}>
+                            <TextInput style = {styles.add_patient_Address_Line_entry_1}
+                            underlineColorAndroid = 'transparent'
+                            placeholder = 'Line 1'
+                            autoCapitalize = 'none'/>
+                            <TextInput style = {styles.add_patient_Address_Line_entry_2}
+                            underlineColorAndroid = 'transparent'
+                            placeholder = 'Line 2'
+                            autoCapitalize = 'none'/>
+                            <View style = {styles.add_patient_Address_Province_area}>
+                            <TextInput style = {styles.add_patient_Address_City_entry}
+                            underlineColorAndroid = 'transparent'
+                            placeholder = 'City'
+                            autoCapitalize = 'none'/>
+                            <TextInput style = {styles.add_patient_Address_Province_entry}
+                            underlineColorAndroid = 'transparent'
+                            placeholder = 'PR'
+                            autoCapitalize = 'none'/>
+                            </View>
+                        </View>   
+                    </View>
+                    <View style = {styles.add_patient_Phone_Number_area}>
+                        <Text style = {styles.add_patient_Phone_Number}>Phone Number:</Text>
+                        <TextInput style = {styles.add_patient_Phone}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Phone Number'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_measurements_area}>
+                        <Text style = {styles.add_patient_height_lbl}>Height:</Text>
+                        <TextInput style = {styles.add_patient_height}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'in cm'
+                        autoCapitalize = 'none'/>
+                        <Text style = {styles.add_patient_weight_lbl}>Weight:</Text>
+                        <TextInput style = {styles.add_patient_weight}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'in lbs'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Medications_area}>
+                        <Text style = {styles.add_patient_Phone_Number}>Currently on Medications?:</Text>
+                        <View style={styles.container}>
+                            <RB PROP={PROP} />
+                        </View>
+                    </View>
+                </ScrollView>
             </ImageBackground>
         );
     }
@@ -85,7 +121,7 @@ class Add_Screen extends Component {
 
 const styles = StyleSheet.create({
     add_render: {
-        marginTop: 50,
+        marginTop: 30,
         fontSize: 40,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -95,12 +131,11 @@ const styles = StyleSheet.create({
     add_render_text: {
         fontSize: 30,
         fontWeight: 'bold',
-        textDecorationLine: 'underline'
     },
     add_patient_name_area: {
         height: 50,
         width: 400,
-        marginTop: 10,
+        marginTop: 30,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -117,7 +152,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     add_patient_first_name: {
-        margin: 15,
+        margin: 20,
         height: 40,
         width: 150,
         borderWidth: 1,
@@ -221,10 +256,17 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         alignItems: 'center'
     },
+    add_patient_Address_Lbl: {
+        fontSize: 20,
+        marginLeft: 40,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
     add_patient_Address_Line_area: {
         height: 120,
         width: 400,
-        marginTop: 90,
+        marginTop: 70,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -261,18 +303,98 @@ const styles = StyleSheet.create({
         fontWeight: '600', 
         color: '#0022E1',
         flexDirection: 'row',
-        justifyContent:'space-between',
+        justifyContent:'space-around',
         alignItems: 'center'
     },
     add_patient_Address_Province_entry:{
         marginTop: 50,
         height: 40,
-        width: 80,
+        width: 50,
         borderWidth: 1,
         padding: 10,
     },
-
-
+    add_patient_Phone_Number_area: {
+        height: 50,
+        width: 400,
+        marginTop: 115,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_Phone_Number: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Phone: {
+        margin: 15,
+        height: 40,
+        width: 220,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_measurements_area: {
+        height: 50,
+        width: 400,
+        marginTop: 5,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_height_lbl: {
+        fontSize: 20,
+        marginLeft: 20,
+        marginRight: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_weight_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_height: {
+        margin: 20,
+        height: 40,
+        width: 70,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_weight: {
+        margin: 20,
+        height: 40,
+        width: 70,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Medications_area: {
+        height: 50,
+        width: 400,
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_medications_choice: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
 })
 
 
@@ -284,6 +406,25 @@ const styles = StyleSheet.create({
         subtitle="Subtitle"/>
     <ToolbarAction icon="search" onPress={this._onSearch} />
     <ToolbarAction icon="more-vert" onPress={this._onMore} />
-</Toolbar> */}
+</Toolbar> 
+*/}
+//  <DropDownPicker
+//     items={[
+//         {label: 'ON'},
+//         {label: 'BC'},
+//         {label: 'NS'},
+//         {label: 'NB'},
+//         {label: 'PEI'},
+//     ]}
+//     //defaultValue={this.state.whatever}
+//     containerStyle={{height: 30, width: 135}}
+//     style={{backgroundColor: '#e9e5e4', borderColor: '#fff', marginLeft: 3}}
+//     itemStyle={{
+//         justifyContent: 'flex-start'
+//     }}
+//     dropDownStyle={{backgroundColor: '#fafafa'}}/>
+//     /* onChangeItem={item => this.setState({
+//         whatever
+//         })}
 
 export default Add_Screen
