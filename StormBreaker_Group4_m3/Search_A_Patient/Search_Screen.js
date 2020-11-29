@@ -3,16 +3,14 @@ import {
     View, 
     Text,
     StyleSheet,
-    Button,
     TouchableOpacity, 
     BackHandler,
     TextInput,
+    Image,
     ImageBackground} from 'react-native';
 import SearchableDropdown from 'react-native-searchable-dropdown';
-import { createAppContainer } from 'react-navigation';
-import { Icon } from 'react-native-elements';
-import { Navigation, createStackNavigator } from 'react-navigation-stack';
-import View_Patient from './View_Patient';
+import { Divider, Button } from 'react-native-elements';
+import imageURL from './avatar.png';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
@@ -24,10 +22,12 @@ var items = [
     {
         id: 2,
         name: 'Kaylee, Matthews | 10/30/1999 | 884-098-9023 | Nursing',
+        pic: require('../pic.jpg')
     },
     {
         id: 3,
         name: 'Kendall, Alexander | 07/11/1942 | N/A | Immediate Care',
+        pic: require('./avatar.png'),
     },
     {
         id: 4,
@@ -71,16 +71,17 @@ class Search_Screen extends Component {
     constructor(props){
         super(props);
         this.state = {
+            avatar: require('./avatar.png'),
             selectedItems: [
             {
                 id: 7,
-                name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
+                name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics',
             },
             {
                 id: 8,
-                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
+                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing',
             }
-            ]
+            ],
         }
     };
     render(){
@@ -88,8 +89,14 @@ class Search_Screen extends Component {
             <ImageBackground
                 source = { background }
                 style = {{ height: '100%', width: '100%'}}>
-                    <View style={styles.welcome_options_c}>
+                    <View style={styles.search_render}>
                         <Text style={styles.search_render_text}>Search a Patient</Text>
+                    </View>
+                    <Divider style={{backgroundColor: 'black', height: 1, zIndex: 1}} />
+                    <View style = {styles.profile_pic}>
+                        <Image
+                            style = {{width: 200, height: 200}}
+                            source = {this.state.avatar}/>
                     </View>
                     <View style={styles.search_tag}>
                         <Fragment>
@@ -97,14 +104,12 @@ class Search_Screen extends Component {
                                 onItemSelect={(item) => {
                                     const items = this.state.selectedItems;
                                     items.push(item)
-                                    this.setState({ selectedItems: items });
+                                    this.setState({ 
+                                        selectedItems: items,
+                                        avatar: item.pic
+                                    });
                                 }}
                                 containerStyle={{ padding: 15 }}
-                                onRemoveItem={
-                                    (item, index) => {
-                                    const items = this.state.selectedItems.filter((sitem) => sitem.id !== item.id);
-                                    this.setState({ selectedItems: items });
-                                }}
                                 itemStyle={{
                                 padding: 10,
                                 marginTop: 2,
@@ -158,7 +163,7 @@ class Search_Screen extends Component {
 };
 const styles = StyleSheet.create({
     search_tag: {
-        marginTop: 220,
+        marginTop: 10,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -172,30 +177,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     container: {
-        backgroundColor: '#ecf0f1'
+        backgroundColor: '#ecf0f1',
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
+    profile_pic: {
+        marginTop: 20,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center'
     },
     search_button: {
-        position: 'absolute',
-        top: 20,
-        left: 40
-    },
-    view_tag: {
-        marginTop: 70,
-        fontSize: 50,
+        fontSize: 30,
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center',
     },
-    view_render_text: {
-        fontSize: 25,
-        fontWeight: 'bold',
-    },
-    welcome_options_c: {
+    search_render: {
         height: 50,
         width: 400,
-        marginTop: 20,
-        fontSize: 20, 
+        marginTop: 10,
+        fontSize: 30, 
         fontWeight: '600', 
         color: '#0022E1',
         flexDirection: 'row',

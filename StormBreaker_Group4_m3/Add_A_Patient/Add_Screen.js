@@ -1,20 +1,101 @@
 import React, {Component} from 'react';
 import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-// import RB from '../RadioButton';
+import { Divider } from 'react-native-elements';
+// import { RadioButton } from 'react-native-paper';
+import RB from '../RadioButton';
+import CB from '../CheckBox';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
-const PROP = [
+const USR_YES_NO = [
 	{
 		key: 'yes',
 		text: 'Yes',
-	},
-	{
-		key: 'no',
-		text: 'No',
-	}
+    },
+    {
+        key: 'no',
+        text: 'No',
+    }
 ];
+
+const USR_ALCOHOL_USAGE = [
+    {
+        key: 'daily',
+        text: 'Daily',
+    },
+    {
+        key: 'monthly',
+        text: 'Monthly',
+    },
+    {
+        key: 'occassionally',
+        text: 'Occassionally',
+    },
+    {
+        key: 'never',
+        text: 'Never',
+    }
+];
+
+const USR_GENDER = [
+    {
+		key: 'male',
+		text: 'Male',
+    },
+    {
+		key: 'female',
+		text: 'Female',
+    },
+    {
+		key: 'other',
+		text: 'Other',
+    },
+];
+
+const USR_HEALTH_CONDTNS_EPILEPSY = [
+    {
+		key: 'epilepsy',
+		text: 'Epilepsy',
+    },
+];
+const USR_HEALTH_CONDTNS_CARDIAC = [
+    {
+		key: 'cardiac issues',
+		text: 'Cardiac Issues',
+    },
+];
+const USR_HEALTH_CONDTNS_HYPERTENSION = [
+    {
+		key: 'hypertension',
+		text: 'Hypertension',
+    },
+];
+const USR_HEALTH_CONDTNS_CANCER = [
+    {
+		key: 'cancer',
+		text: 'Cancer',
+    },
+];
+const USR_HEALTH_CONDTNS_ASTHMA = [
+    {
+		key: 'asthma',
+		text: 'Asthma',
+    },
+];
+const USR_HEALTH_CONDTNS_DIABETES = [
+    {
+		key: 'diabetes',
+		text: 'Diabetes',
+    },
+];
+const USR_HEALTH_CONDTNS_OTHER = [
+    {
+		key: 'other',
+		text: 'Other',
+    },
+];
+
 
 class Add_Screen extends Component {
     render()
@@ -26,6 +107,7 @@ class Add_Screen extends Component {
                 <View style={styles.add_render}>
                     <Text style={styles.add_render_text}>Add a New Patient</Text>
                 </View>
+                <Divider style={{ marginTop: 10, backgroundColor: 'black', height: 1, zIndex: 1}} />
                 <ScrollView style={styles.scrollView}>
                     <View style = {styles.add_patient_name_area}>
                         <Text style = {styles.add_patient_name}>Name:</Text>
@@ -60,10 +142,9 @@ class Add_Screen extends Component {
                     </View>
                     <View style = {styles.add_patient_Gender_area}>
                         <Text style = {styles.add_patient_Gender}>Gender:</Text>
-                        <TextInput style = {styles.add_patient_Gender_sex}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Sex'
-                        autoCapitalize = 'none'/>
+                        <View style = {styles.add_patient_Gender_sex}>
+                            <RB user_selection={USR_GENDER} />
+                        </View>
                     </View>
                     <View style = {styles.add_patient_Address_area}>
                         <Text style = {styles.add_patient_Address_Lbl}>Address:</Text>
@@ -108,16 +189,18 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'/>
                     </View>
                     <View style = {styles.add_patient_Medications_area}>
-                        <Text style = {styles.add_patient_Phone_Number}>Currently on Medications?:</Text>
-                        {/* <View style={styles.container}>
-                            <RB PROP={PROP} />
-                        </View> */}
+                        <Text style = {styles.add_patient_meds_lbl}>Currently on Medications?:</Text>
+                        <View style={styles.add_patient_medications_choice}>
+                            <View style = {styles.row_wise_radio_YES_NO}>
+                                <RB user_selection={USR_YES_NO} />
+                            </View>
+                        </View>
                     </View>
                     <View style = {styles.add_patient_meds_specification_area}>
-                        <Text style = {styles.add_patient_meds_lbl}>if yes, please specify:</Text>
+                        <Text style = {styles.add_patient_meds_YES_lbl}>if yes, please specify:</Text>
                         <TextInput style = {styles.add_patient_meds_specs}
                         underlineColorAndroid = 'transparent'
-                        placeholder = 'add additional info here:'
+                        placeholder = 'others please specify here:'
                         autoCapitalize = 'none'/>
                     </View>
                     <View style = {styles.add_patient_EPhone_Number_area}>
@@ -139,18 +222,85 @@ class Add_Screen extends Component {
                     </View>
                     <View style = {styles.add_patient_ERelationship_area}>
                         <Text style = {styles.add_patient_ERelationship_Lbl}>Relationship:</Text>
-                        <TextInput style = {styles.add_patient_ERelatiopnship}
+                        <TextInput style = {styles.add_patient_ERelationship}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Relationship to contact:'
                         autoCapitalize = 'none'/>
                     </View>
-                    <View style={styles.container}>
-                            <Button style={styles.search_button}
-                                title="Submit"
-                                onPress={() => this.props.navigation.navigate('Patient_Records')} 
-                                borderColor="#000000"
-                                raised = {true}/>
+                    <View style = {styles.add_patient_Existing_Condtns_area}>
+                        <Text style = {styles.add_patient_Existing_Condtns_lbl}>Check the following existing health conditions that apply to the patient:</Text>
+                    </View>
+                    <View style = {styles.add_patient_Existing_Condtns_list_area}>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_EPILEPSY}/>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_CARDIAC}/>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_HYPERTENSION}/>
+                    </View>
+                    <View style = {styles.add_patient_Existing_Condtns_list_area}>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_CANCER}/>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_ASTHMA}/>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_DIABETES}/>
+                        <CB user_selection = {USR_HEALTH_CONDTNS_OTHER}/>
+                    </View>
+                    <View>
+                        <TextInput style = {styles.add_patient_Existing_Condtns_other}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'others please specify here:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Current_Symptoms_area}>
+                        <Text style = {styles.add_patient_Current_Symptoms_lbl}>Current symptoms that apply to the patient:</Text>
+                    </View>
+                    <View>
+                        <TextInput style = {styles.add_patient_Current_Symptoms_other}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'please specify here symptoms here:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Medical_Allergies_area}>
+                        <Text style = {styles.add_patient_Medical_Allergies}>Does the patient have any medical allergies?:</Text>
+                        <View style={styles.add_patient_Medical_Allergies_choice}>
+                            <View>
+                                <RB user_selection={USR_YES_NO} />
+                            </View>
                         </View>
+                    </View>
+                    <View style = {styles.add_patient_Medical_Allergies_YES_area}>
+                        <Text style = {styles.add_patient_Medical_Allergies_YES_lbl}>if yes, please specify:</Text>
+                        <TextInput style = {styles.add_patient_Medical_Allergies_YES_specs}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'others please specify here:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style = {styles.add_patient_Alcohol_area}>
+                        <Text style = {styles.add_patient_Alcohol_lbl}>How often does the patient consume alcohol?:</Text>
+                        <View style = {styles.add_patient_Alcohol_data}>
+                            <RB user_selection={USR_ALCOHOL_USAGE} />
+                        </View>
+                    </View>
+                    <View style = {styles.add_patient_Tobacco_area}>
+                        <Text style = {styles.add_patient_Tobacco}>Does the patient smoke or consume tobacco?:</Text>
+                        <View style={styles.add_patient_Tobacco_choice}>
+                            <View>
+                                <RB user_selection={USR_YES_NO} />
+                            </View>
+                        </View>
+                    </View>
+                    <View style = {styles.add_patient_Tobacco_YES_area}>
+                        <Text style = {styles.add_patient_Tobacco_YES_lbl}>if yes, please {"\n"}
+                        specify how often:</Text>
+                        <TextInput style = {styles.add_patient_Tobacco_YES_specs}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'others please specify here:'
+                        autoCapitalize = 'none'/>
+                    </View>
+                    <View style={styles.container}>
+                        <Button style={styles.search_button}
+                            title="Submit"
+                            onPress={() => this.props.navigation.navigate('Patient_Records')} 
+                            borderColor="#000000"
+                            // raised = {true}
+                            />
+                    </View>
                 </ScrollView>
             </ImageBackground>
         );
@@ -162,8 +312,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#ecf0f1'
     },
     add_render: {
-        marginTop: 30,
-        fontSize: 40,
+        marginTop: 10,
+        fontSize: 30,
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
@@ -181,7 +331,7 @@ const styles = StyleSheet.create({
     add_patient_name_area: {
         height: 50,
         width: 400,
-        marginTop: 0,
+        marginTop: 10,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -269,7 +419,7 @@ const styles = StyleSheet.create({
     add_patient_Gender_area: {
         height: 50,
         width: 400,
-        marginTop: 10,
+        marginTop: 5,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -284,12 +434,20 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
     },
+    // add_patient_Gender_sex: {
+    //     margin: 15,
+    //     height: 40,
+    //     width: 250,
+    //     borderWidth: 1,
+    //     padding: 10,
+    // },
     add_patient_Gender_sex: {
-        margin: 15,
-        height: 40,
-        width: 250,
-        borderWidth: 1,
-        padding: 10,
+        marginTop: 15,
+        fontSize: 20,
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
     },
     add_patient_Address_area: {
         height: 50,
@@ -437,9 +595,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     add_patient_medications_choice: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems: 'center'
     },
     add_patient_meds_specification_area: {
         height: 180,
@@ -452,9 +614,16 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     add_patient_meds_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_meds_YES_lbl: {
         fontSize: 15,
         marginLeft: 10,
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
     },
@@ -464,6 +633,13 @@ const styles = StyleSheet.create({
         width: 220,
         borderWidth: 1,
         padding: 10,
+    },
+    row_wise_radio_YES_NO: {
+        fontSize: 20,
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
     },
     add_patient_EPhone_Number_area: {
         height: 50,
@@ -533,9 +709,193 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
     },
-    add_patient_ERelatiopnship: {
+    add_patient_ERelationship: {
         margin: 15,
         height: 40,
+        width: 220,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Existing_Condtns_area: {
+        height: 50,
+        width: 390,
+        marginTop: 20,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Existing_Condtns_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Existing_Condtns_list_area: {
+        height: 50,
+        width: 400,
+        marginTop: 20,
+        fontSize: 20, 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Existing_Condtns_other: {
+        margin: 15,
+        height: 40,
+        width: 380,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Current_Symptoms_area: {
+        height: 50,
+        width: 390,
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Current_Symptoms_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Current_Symptoms_other: {
+        margin: 15,
+        height: 80,
+        width: 380,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Medical_Allergies_area: {
+        height: 100,
+        width: 400,
+        marginTop: 5,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Medical_Allergies: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Medical_Allergies_choice: {
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems: 'center'
+    },
+    add_patient_Medical_Allergies_YES_area: {
+        height: 180,
+        width: 400,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_Medical_Allergies_YES_lbl: {
+        fontSize: 15,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Medical_Allergies_YES_specs: {
+        margin: 15,
+        height: 150,
+        width: 220,
+        borderWidth: 1,
+        padding: 10,
+    },
+    add_patient_Alcohol_area: {
+        height: 100,
+        width: 400,
+        marginTop: 15,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Alcohol_lbl: {
+        fontSize: 20,
+        marginLeft: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Alcohol_data: {
+        marginTop: 20,
+        fontSize: 20,
+        marginLeft: 20,
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Tobacco_area: {
+        height: 100,
+        width: 400,
+        marginTop: 5,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        justifyContent:'center',
+        alignItems: 'center'
+    },
+    add_patient_Tobacco: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Tobacco_choice: {
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems: 'center'
+    },
+    add_patient_Tobacco_YES_area: {
+        height: 180,
+        width: 400,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
+    add_patient_Tobacco_YES_lbl: {
+        fontSize: 15,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_Tobacco_YES_specs: {
+        margin: 15,
+        height: 150,
         width: 220,
         borderWidth: 1,
         padding: 10,

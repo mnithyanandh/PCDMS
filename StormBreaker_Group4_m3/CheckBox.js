@@ -5,32 +5,38 @@ import {
     Text, 
     StyleSheet } from 'react-native';
 
-    export default class RadioButton extends Component {
-	state = {
-		value: null,
+export default class CheckBox extends Component {
+    state = {
+        value: null,
     };
-    
     render() {
         const { user_selection } = this.props;
         const { value } = this.state;
-    
+
         return (
             <View style = {styles.row_container}>
                 {user_selection.map(res => {
                     return (
                         <View key={res.key} style={styles.button_container}>
-                            <Text style={styles.radioText}>{res.text}</Text>
+                            <Text style={styles.checkBoxText}>{res.text}</Text>
                             <TouchableOpacity
-                                style={styles.radioCircle}
+                                style={styles.checkBox}
                                 onPress={() => {
-                                    this.setState({
-                                        value: res.key,
-                                    });
+                                    if(value == null){
+                                        this.setState({
+                                            value: res.key
+                                        });
+                                    }
+                                    else{
+                                        this.setState({
+                                            value: null
+                                        });
+                                    }
                                 }}>
-                                  {
-                                  value == res.key && 
-                                  <View style={styles.selectedRb} />
-                                  }
+                                    {
+                                    value == res.key && 
+                                    <View style={styles.selectedCheckBox} />
+                                    }
                             </TouchableOpacity>
                         </View>
                     );
@@ -52,26 +58,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 		justifyContent: 'space-around',
 	},
-    radioText: {
+    checkBoxText: {
         fontSize: 15,
         color: '#000',
         fontWeight: '700'
     },
-	radioCircle: {
+	checkBox: {
 		height: 20,
         width: 20,
         marginLeft: 5,
         marginRight: 10,
-		borderRadius: 100,
 		borderWidth: 2,
 		borderColor: '#3740ff',
         alignItems: 'center',
         justifyContent: 'center'
 	},
-	selectedRb: {
+	selectedCheckBox: {
 		width: 10,
 		height: 10,
-		borderRadius: 50,
 		backgroundColor: '#3740ff',
     },
     result: {

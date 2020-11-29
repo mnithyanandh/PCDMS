@@ -4,17 +4,12 @@ import {
     Text, 
     StyleSheet, 
     TextInput, 
-    TouchableOpacity,
-    Button,
     Image,
-    ActivityIndicator,
     ImageBackground,
     Alert 
 } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import Auth_VerifiedApp from './Auth_verified';
-import Auth_Denied from './Auth_denied';
+import { Icon, Button } from 'react-native-elements';
+import RNExitApp from 'react-native-exit-app';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
@@ -28,6 +23,9 @@ class Auth_Screen extends Component {
     accessHandler=(text)=>{
         this.setState({ access_code: text })
     }
+    clearText = () => {
+        textInput.setNativeProps({text: ''})
+     }
     render(access_code)
     {
         return(
@@ -36,6 +34,10 @@ class Auth_Screen extends Component {
                 style={{height: '100%',width: '100%'}}>
                     <View style={styles.auth_tag}>
                         <Text style={styles.auth_render_text}>User Authentication</Text>
+                    </View>
+                    <View style = {styles.auth_logo}>
+                        <Image source = {logo_icon}
+                        style = {{alignContent: 'center', height: '100%', width: '100%'}}/>
                     </View>
                     <View>
                         <Text style={styles.auth_enter_txtfield}>Enter personal access code:</Text>
@@ -47,50 +49,87 @@ class Auth_Screen extends Component {
                             autoCapitalize = 'none'
                             onChangeText = {this.accessHandler}/>
                     </View>
-                    <View>
+                    <View style = {styles.button_view}>
                         <Button style={styles.auth_button}
                             title="Verify"
+                            color = "#000000"
                             onPress={() => 
                                 {
-                                    if(this.state.access_code.text = "yes"){
-                                        this.props.navigation.navigate('AVuthentication')
-                                    }
-                                    else if(this.state.access_code.text == "no"){
-                                        this.props.navigation.navigate('ADthentication')
-                                    }
-                                    else {
-                                        Alert.alert(
-                                            "No entry detected!",
-                                            "Kindly retry your access code",
-                                            [
-                                                {
+                                    Alert.alert(
+                                        "Are you sure you want to proceed?",
+                                        "Invalid/Incorrect attempts will be logged by Admin",
+                                        [
+                                            {
                                                 text: "Cancel",
-                                                onPress: () => console.log("Cancel Pressed"),
+                                                // onPress: this.clearText,
                                                 style: "cancel"
-                                                },
-                                                {
+                                            },
+                                            {
                                                 text: "OK",
-                                                onPress: password => console.log("OK Pressed, password: " + password)
-                                                }
-                                            ],
-                                        );
-                                    }
+                                                onPress: () => {
+                                                    if(this.state.access_code == 'yes'){
+                                                        this.props.navigation.navigate('AVuthentication')
+                                                    }
+                                                    else if(this.state.access_code != 'yes'){
+                                                        this.props.navigation.navigate('ADthentication')
+                                                    }
+                                                    else if(this.state.access_code != ''){
+                                                        Alert.alert(
+                                                            "Invalid entry detected!",
+                                                            "Kindly retry your access code",
+                                                            [
+                                                                {
+                                                                text: "OK",
+                                                                onPress: () => console.log("Cancel Pressed"),
+                                                                style: "cancel"
+                                                                }
+                                                            ],
+                                                        );
+                                                    }
+                                                    else {
+                                                        Alert.alert(
+                                                            "No entry detected!",
+                                                            "Kindly enter an access code",
+                                                            [
+                                                                {
+                                                                text: "OK",
+                                                                onPress: () => console.log("Cancel Pressed"),
+                                                                style: "cancel"
+                                                                }
+                                                            ],
+                                                        );
+                                                    }
+                                                    this.clearText
+                                                },
+                                                style: "cancel"
+                                            },
+                                        ],
+                                    );
                                 }}
                             borderColor="#000000"
-                            type = "outline"
                             raised = {true}/>
                     </View>
-                    <View style = {styles.auth_logo}>
-                        <Image source = {logo_icon}
-                        style = {{marginTop: 100, alignContent: 'center', height: '100%', width: '70%'}}/>
+                    <View style = {styles.button_view}>
+                        <Button 
+                            style = {styles.logout}
+                            title = "Quit"
+                            onPress={() => RNExitApp.exitApp()}
+                            bordercolor = "#000000"
+                            raised = {true}>     
+                        </Button>
                     </View>
             </ImageBackground>
         );
     }
 };
 const styles = StyleSheet.create({  
+    button_view: {
+        marginTop: 20,
+        justifyContent: 'center', 
+        alignItems: 'center'
+    },
     auth_tag: {
-        marginTop: 70,
+        marginTop: 130,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -103,7 +142,6 @@ const styles = StyleSheet.create({
     },
     auth_enter_txtfield: {
         fontSize: 20,
-        marginTop: 80,
         justifyContent: 'center',
         color: '#0022E1',
         alignItems: 'center',
@@ -117,17 +155,23 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     auth_logo: {
-        flex: 0.6,
+        flex: 0.8,
         justifyContent: 'center',
         alignItems: 'center'
     }, 
     auth_button: {
-        position: 'absolute',
-        top: 20,
-        left: 40
+        fontSize: 30,
+        fontWeight: 'bold',
+        justifyContent: 'center',
     },
     button_container: {
-        backgroundColor: '#ecf0f1'
+        backgroundColor: '#ecf0f1',
     },
+    logout: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
 }); 
 export default Auth_Screen

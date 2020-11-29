@@ -22,23 +22,22 @@ function Auth_Verified({ navigation }) {
         <ImageBackground
             source={ background }
             style={{height: '100%',width: '100%'}}>
+                <View style={styles.auth_verified_tag}>
+                    <Text style={styles.auth_verified_render_text}>Access Verified. Logging you in...</Text>
+                </View>
                 <View style={styles.auth_verified_logo}>
-                <ActivityIndicator
+                    <ActivityIndicator
                     // Add info about the spinner:
                     size = "large"
                     color = "black"
-                    animating = 'true'>
-                    </ActivityIndicator>
-                </View>
-                <View style={styles.auth_verified_tag}>
-                    <Text style={styles.auth_verified_render_text}>Access Verified. Logging you in...</Text>
+                    animating = 'true'/>
                 </View>
         </ImageBackground>
     );
 }
 const styles = StyleSheet.create({
     auth_verified_tag: {
-        marginTop: 70,
+        marginTop: 400,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     auth_verified_logo: {
-        flex: 0.4,
+        flex: 0.2,
         justifyContent: 'center',
         alignItems: 'center'
     },

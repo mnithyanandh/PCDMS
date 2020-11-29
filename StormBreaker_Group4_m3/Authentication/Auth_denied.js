@@ -18,28 +18,27 @@ function Auth_Denied({navigation}) {
         <ImageBackground
             source={ background }
             style={{height: '100%',width: '100%'}}>
-                <View style = {styles.auth_denied_logo}>
-                <ActivityIndicator
-                    // Add info about the spinner:
-                    size = "large"
-                    color = "black"
-                    animating = 'true'>
-                    </ActivityIndicator>
-                </View>
                 <View style={styles.auth_denied_tag}>
                     <Text style={styles.auth_denied_render_text}>Access denied, try again!</Text>
+                </View>
+                <View style = {styles.auth_denied_logo}>
+                    <ActivityIndicator
+                        // Add info about the spinner:
+                        size = "large"
+                        color = "black"
+                        animating = 'true'/>
                 </View>
         </ImageBackground>
     );
 }
 const styles = StyleSheet.create({
     auth_denied_logo: {
-        flex: 0.4,
+        flex: 0.2,
         justifyContent: 'center',
         alignItems: 'center'
     },
     auth_denied_tag: {
-        marginTop: 70,
+        marginTop: 400,
         fontSize: 50,
         fontWeight: 'bold',
         justifyContent: 'center',

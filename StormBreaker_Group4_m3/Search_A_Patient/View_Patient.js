@@ -29,7 +29,7 @@ function View_Patient({ navigation }) {
                     <Text style={styles.view_patient_base_info}>78years | Female | DOA: 09/10/2019 | 10W-008</Text>
                 </View>
                 <Divider style={{ marginTop: 10, backgroundColor: 'black', height: 1, zIndex: 1}} />
-                <ScrollView style={styles.scrollView}>
+                <ScrollView style = {styles.scrollView}>
                     <View style = {styles.view_patient_subinfo}>
                         <Text style = {styles.view_title_heading_health_issues}>Health Issues:</Text>
                         <Text style = {styles.view_title_heading_diagnosis_week}>Diagnosis Week:</Text>
@@ -228,14 +228,13 @@ function View_Patient({ navigation }) {
                             </ScrollView>
                         </SafeAreaView>
                     </View>
-                    <View>
+                    <View style = {styles.container}>
                         <Button style={styles.save_button}
                             title="Save Changes"
-                            // borderWidth= {1}
-                            borderColor="#000000"
                             onPress={() => { 
                                 navigation.navigate('Search')}
                             }
+                            borderColor="#000000"
                             raised = {true}/>
                     </View>
                 </ScrollView>
@@ -244,7 +243,7 @@ function View_Patient({ navigation }) {
 }
 const styles = StyleSheet.create({  
     container: {
-        backgroundColor: '#ecf0f1'
+        backgroundColor: '#ecf0f1',
     },
     view_tag: {
         marginTop: 20,
@@ -412,11 +411,10 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
     },
     save_button: {
-        position: 'absolute',
-        top: 30,
-        left: 40,
+        fontSize: 30,
         fontWeight: 'bold',
-        color: '#1875d8'
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 export default View_Patient

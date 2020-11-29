@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
-import { Toolbar, ToolbarBackAction, ToolbarContent, ToolbarAction } from 'react-native-paper';
-
-import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
@@ -11,8 +8,6 @@ import Auth_ScreenApp from './Authentication/Auth_screen';
 import SearchApp from './Search_A_Patient/Search_Screen';
 import Add_Screen from './Add_A_Patient/Add_Screen';
 import ActivePatients_Screen from './Active_Patient_Cases/ActivePatients_Screen';
-import { color } from 'react-native-reanimated';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('./background.png');
@@ -51,7 +46,7 @@ class Welcome_Screen extends Component {
                         style = {styles.help}
                         color = "#000000"
                         title= "Help/Contact Us"
-                        type = "outline"
+                        borderColor="#000000"
                         raised = {true}>     
                     </Button>
                     <Button 
@@ -59,7 +54,7 @@ class Welcome_Screen extends Component {
                         color = "#000000"
                         title = "Logout"
                         onPress={() => this.props.navigation.navigate('Authentication')}
-                        type = "outline"
+                        borderColor="#000000"
                         raised = {true}>     
                     </Button>
                 </View>
@@ -96,7 +91,9 @@ const BtTab=createMaterialBottomTabNavigator(
                 <View>
                     <Icon name={'search'} size={26} fontWeight={'bold'} color={'white'}/>
                 </View>
-            )
+            ),
+            title: 'Search',
+            headerLeft: null,
             }
         },
         Add:{screen:Add_Screen, navigationOptions: {

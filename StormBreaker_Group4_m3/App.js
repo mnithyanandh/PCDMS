@@ -1,4 +1,5 @@
 import React from 'react';
+import {Text, StyleSheet} from 'react-native';
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
@@ -10,8 +11,8 @@ import Auth_Denied from './Authentication/Auth_denied';
 import Seach_Screen from './Search_A_Patient/Search_Screen';
 import View_Patient from './Search_A_Patient/View_Patient';
 import Add_Screen from './Add_A_Patient/Add_Screen';
-import MedicalHistory_Screen from './Add_A_Patient/MedicalHistory_Screen';
 import ActivePatients_Screen from './Active_Patient_Cases/ActivePatients_Screen';
+import { NativeAppEventEmitter } from 'react-native';
 
 export default class App extends React.Component {
   render() {
@@ -21,26 +22,57 @@ export default class App extends React.Component {
 
 const AppNavigator = createStackNavigator({
   Splash_Screen: {
-    screen: Splash_Screen
+    screen: Splash_Screen,
+    navigationOptions: {
+      header: null,
+    }
   },
   Authentication: {
-    screen: Auth_Screen
+    screen: Auth_Screen,
+    navigationOptions: {
+      header: null,
+    }
   },
   AVuthentication: {
-    screen: Auth_Verified
+    screen: Auth_Verified,
+    navigationOptions: {
+      header: null,
+    }
   },
   ADthentication: {
-    screen: Auth_Denied
+    screen: Auth_Denied,
+    navigationOptions: {
+      header: null,
+    }
   },
   Home: {
-    screen: Welcome_Screen
+    screen: Welcome_Screen,
+    navigationOptions: {
+      title: 'PCDMS',
+      headerLeft: null,
+    }
   },
   Patient_Records: {
-    screen: View_Patient
+    screen: View_Patient,
+    navigationOptions: {
+      title: 'PCDMS',
+      headerLeft: null,
+    }
   },
 },
 {
     initialRouteName: "Splash_Screen"  
 });
 
+const styles = StyleSheet.create({
+
+  headerStyle:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+
+});
+
 const AppContainer = createAppContainer(AppNavigator);
+
