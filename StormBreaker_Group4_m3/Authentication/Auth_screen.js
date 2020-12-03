@@ -18,16 +18,46 @@ var logo_icon = require('../712_logo.png');
 class Auth_Screen extends Component {
     // Declare a states for Access Code input from user  
     state={
-        access_code: ''
+        access_code: '',
+        pass_code: []
     }
+
     accessHandler=(text)=>{
-        this.setState({ access_code: text })
+        this.setState({ 
+            access_code: text 
+        })
     }
+
     clearText = () => {
-        textInput.setNativeProps({text: ''})
-     }
-    render(access_code)
+        this.setState({text: ''})
+    }
+
+    fetchData=()=>{
+        const url = 'https://wecare-heroku.herokuapp.com/accesscode'
+        fetch(url)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    pass_code: data
+                })
+            })
+            .catch((error) => {
+            console.log(error)
+            .done();
+        });
+    }
+
+    componentDidMount(){
+        this.fetchData();
+        this.clearText();
+    }
+
+    render()
     {
+        const codes = this.state.pass_code.some((val) => {
+            return val.accessCode === this.state.access_code;
+        });
+
         return(
             <ImageBackground
                 source={ background }
@@ -47,7 +77,8 @@ class Auth_Screen extends Component {
                             underlineColorAndroid = 'transparent'
                             placeholder = 'Enter code here:'
                             autoCapitalize = 'none'
-                            onChangeText = {this.accessHandler}/>
+                            onChangeText= {this.accessHandler}
+                            />
                     </View>
                     <View style = {styles.button_view}>
                         <Button style={styles.auth_button}
@@ -61,28 +92,32 @@ class Auth_Screen extends Component {
                                         [
                                             {
                                                 text: "Cancel",
-                                                // onPress: this.clearText,
+                                                onPress: () => this.clearText,
                                                 style: "cancel"
                                             },
                                             {
                                                 text: "OK",
-                                                onPress: () => {
-                                                    if(this.state.access_code == 'yes'){
+                                                onPress: () => 
+                                                {
+                                                    
+                                                    if(codes == true){
                                                         this.props.navigation.navigate('AVuthentication')
+                                                        
                                                     }
-                                                    else if(this.state.access_code != 'yes'){
+                                                    else if(codes == false){
                                                         this.props.navigation.navigate('ADthentication')
+                                                        
                                                     }
-                                                    else if(this.state.access_code != ''){
+                                                    else if(codes != true && codes != false){
                                                         Alert.alert(
                                                             "Invalid entry detected!",
                                                             "Kindly retry your access code",
                                                             [
                                                                 {
-                                                                text: "OK",
-                                                                onPress: () => console.log("Cancel Pressed"),
-                                                                style: "cancel"
-                                                                }
+                                                                    text: "OK",
+                                                                    onPress: () => {this.clearText},
+                                                                    style: "Ok"
+                                                                },
                                                             ],
                                                         );
                                                     }

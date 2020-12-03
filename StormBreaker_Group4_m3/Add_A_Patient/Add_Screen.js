@@ -10,11 +10,11 @@ import CB from '../CheckBox';
 var background = require('../background.png');
 const USR_YES_NO = [
 	{
-		key: 'yes',
+		key: 'true',
 		text: 'Yes',
     },
     {
-        key: 'no',
+        key: 'false',
         text: 'No',
     }
 ];
@@ -96,8 +96,77 @@ const USR_HEALTH_CONDTNS_OTHER = [
     },
 ];
 
-
 class Add_Screen extends Component {
+
+    state={
+        firstName: '',
+        lastName: '',
+        dateOfBirth: new Date(),
+        gender: 'Male',
+        address_line_1: '',
+        address_line_2: '',
+        city: '',
+        province: '',
+        patientContact: 0,
+        height: 0,
+        weight: 0,
+        currentlyOnMedication: false,
+        emergencyContact: 0,
+        emergencyFirstName: '',
+        emergencyLastName: '',
+        Relationship: '',
+        diseases: '',
+        symptoms: '',
+        medicalAllergies: '',
+        consumeAlcohol: false,
+        consumeTobaccoOrSmoke: false,
+        condition: 'Stable',
+        dateOfAdmission: new Date(),
+    };
+    
+    
+
+    fetchData=()=>{
+        const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
+        const data = {
+            firstName:this.state.firstName,
+            lastName:this.state.lastName,
+            dateOfBirth:this.state.dateOfBirth,
+            gender:this.state.gender,
+            address:Address,
+            patientContact:this.state.patientContact,
+            height:this.state.height,
+            weight:this.state.height,
+            currentlyOnMedication:this.state.currentlyOnMedication,
+            emergencyFirstName:this.state.emergencyFirstName,
+            emergencyLastName:this.state.emergencyLastName,
+            Relationship:this.state.Relationship,
+            diseases:this.state.diseases,
+            symptoms:this.state.symptoms,
+            consumeAlcohol:this.state.consumeAlcohol,
+            consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
+            condition:this.state.condition,
+            dateOfAdmission:this.state.dateOfAdmission
+        }
+        const url = "https://wecare-heroku.herokuapp.com/patients"
+        fetch(url,
+        {
+         headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+          })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+    }
+
     render()
     {       
         return(
@@ -114,11 +183,17 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_first_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'First Name'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(firstName) => this.setState({ firstName })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                         <TextInput style = {styles.add_patient_last_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Last Name'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(lastName) => this.setState({ lastName })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_DOB_A_area}>
                         <Text style = {styles.add_patient_DOB}>DOB:</Text>
@@ -152,20 +227,32 @@ class Add_Screen extends Component {
                             <TextInput style = {styles.add_patient_Address_Line_entry_1}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'Line 1'
-                            autoCapitalize = 'none'/>
+                            autoCapitalize = 'none'
+                            onChangeText={(address_line_1) => this.setState({ address_line_1 })}
+                            ref={input => { this.textInput = input }}
+                            returnKeyType="go"/>
                             <TextInput style = {styles.add_patient_Address_Line_entry_2}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'Line 2'
-                            autoCapitalize = 'none'/>
+                            autoCapitalize = 'none'
+                            onChangeText={(address_line_2) => this.setState({ address_line_2 })}
+                            ref={input => { this.textInput = input }}
+                            returnKeyType="go"/>
                             <View style = {styles.add_patient_Address_Province_area}>
                             <TextInput style = {styles.add_patient_Address_City_entry}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'City'
-                            autoCapitalize = 'none'/>
+                            autoCapitalize = 'none'
+                            onChangeText={(city) => this.setState({ city })}
+                            ref={input => { this.textInput = input }}
+                            returnKeyType="go"/>
                             <TextInput style = {styles.add_patient_Address_Province_entry}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'PR'
-                            autoCapitalize = 'none'/>
+                            autoCapitalize = 'none'
+                            onChangeText={(province) => this.setState({ province })}
+                            ref={input => { this.textInput = input }}
+                            returnKeyType="go"/>
                             </View>
                         </View>   
                     </View>
@@ -174,19 +261,28 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_Phone}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Phone Number'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(patientContact) => this.setState({ patientContact })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_measurements_area}>
                         <Text style = {styles.add_patient_height_lbl}>Height:</Text>
                         <TextInput style = {styles.add_patient_height}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'in cm'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(height) => this.setState({ height })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                         <Text style = {styles.add_patient_weight_lbl}>Weight:</Text>
                         <TextInput style = {styles.add_patient_weight}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'in lbs'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(weight) => this.setState({ weight })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_Medications_area}>
                         <Text style = {styles.add_patient_meds_lbl}>Currently on Medications?:</Text>
@@ -201,31 +297,47 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_meds_specs}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'others please specify here:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        // onChangeText={(currentlyOnMedication) => this.setState({ currentlyOnMedication })}
+                        // ref={input => { this.textInput = input }}
+                        // returnKeyType="go"
+                        />
                     </View>
                     <View style = {styles.add_patient_EPhone_Number_area}>
                         <Text style = {styles.add_patient_EPhone_Number}>Emergency Phone No.:</Text>
                         <TextInput style = {styles.add_patient_EPhone}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Phone Number'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(emergencyContact) => this.setState({ emergencyContact })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_E_name_area}>
                         <TextInput style = {styles.add_patient_Efirst_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'First Name'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(emergencyFirstName) => this.setState({ emergencyFirstName })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                         <TextInput style = {styles.add_patient_Elast_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Last Name'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(emergencyLastName) => this.setState({ emergencyLastName })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_ERelationship_area}>
                         <Text style = {styles.add_patient_ERelationship_Lbl}>Relationship:</Text>
                         <TextInput style = {styles.add_patient_ERelationship}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Relationship to contact:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(Relationship) => this.setState({ Relationship })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_Existing_Condtns_area}>
                         <Text style = {styles.add_patient_Existing_Condtns_lbl}>Check the following existing health conditions that apply to the patient:</Text>
@@ -245,7 +357,10 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_Existing_Condtns_other}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'others please specify here:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(diseases) => this.setState({ diseases })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_Current_Symptoms_area}>
                         <Text style = {styles.add_patient_Current_Symptoms_lbl}>Current symptoms that apply to the patient:</Text>
@@ -254,7 +369,10 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_Current_Symptoms_other}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'please specify here symptoms here:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(symptoms) => this.setState({ symptoms })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_Medical_Allergies_area}>
                         <Text style = {styles.add_patient_Medical_Allergies}>Does the patient have any medical allergies?:</Text>
@@ -269,7 +387,10 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_Medical_Allergies_YES_specs}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'others please specify here:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(medicalAllergies) => this.setState({ medicalAllergies })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style = {styles.add_patient_Alcohol_area}>
                         <Text style = {styles.add_patient_Alcohol_lbl}>How often does the patient consume alcohol?:</Text>
@@ -291,12 +412,15 @@ class Add_Screen extends Component {
                         <TextInput style = {styles.add_patient_Tobacco_YES_specs}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'others please specify here:'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        onChangeText={(province) => this.setState({ province })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"/>
                     </View>
                     <View style={styles.container}>
                         <Button style={styles.search_button}
                             title="Submit"
-                            onPress={() => this.props.navigation.navigate('Patient_Records')} 
+                            onPress={() => this.bindSubmitClick()} 
                             borderColor="#000000"
                             // raised = {true}
                             />
@@ -305,7 +429,13 @@ class Add_Screen extends Component {
             </ImageBackground>
         );
     }
+    bindSubmitClick=()=>{
+        this.fetchData();
+        this.props.navigation.navigate('Home');
+    };
 };
+
+
 
 const styles = StyleSheet.create({
     container: {

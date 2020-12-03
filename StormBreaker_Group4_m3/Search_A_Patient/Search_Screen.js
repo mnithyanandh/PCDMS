@@ -18,6 +18,7 @@ var items = [
     {
         id: 1,
         name: 'Karen, Jones | 04/02/1992 | 884-324-0930 | Pediatrics',
+        pic: require('./avatar.png'),
     },
     {
         id: 2,
@@ -32,38 +33,47 @@ var items = [
     {
         id: 4,
         name: 'Briony, Morris | 27/73/4094 | 515-029-3856 | Nursing',
+        pic: require('./avatar.png'),
     },
     {
         id: 5,
         name: 'Freddie, Brown | 33/90/7254 | 909-630-2437 | Pediatrics',
+        pic: require('./avatar.png'),
     },
     {
         id: 6,
-        name: 'Leonardo, Myers | 76/55/6304 | 093-450-8039 | Immediate Care' ,
+        name: 'Leonardo, Myers | 76/55/6304 | 093-450-8039 | Immediate Care',
+        pic: require('./avatar.png'),
     },
     {
         id: 7,
         name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics',
+        pic: require('./avatar.png'),
     },
     {
         id: 8,
         name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing',
+        pic: require('./avatar.png'),
     },
     {
         id: 9,
         name: 'Stella, Wright | 61/87/3391 | 792-256-0896 | Immediate Care',
+        pic: require('./avatar.png'),
     },
     {
         id: 10,
         name: 'George, Murray | 78/42/3681 | 905-242-3034 | Immediate Care',
+        pic: require('./avatar.png'),
     },
     {
         id: 11,
         name: 'Victoria, Evans | 82/29/0824 | 022-728-4438 | Nursing',
+        pic: require('./avatar.png'),
     },
     {
         id: 12,
         name: 'Amelia, Armstrong | 88/21/4432 | 590-851-6165 | Pediatrics',
+        pic: require('./avatar.png'),
     },
 ];
 
