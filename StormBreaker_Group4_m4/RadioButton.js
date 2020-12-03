@@ -24,8 +24,9 @@ import {
                                 style={styles.radioCircle}
                                 onPress={() => {
                                     this.setState({
-                                        value: res.key,
+                                        value: res.key
                                     });
+                                    console.log(this.state.value);
                                 }}>
                                   {
                                   value == res.key && 

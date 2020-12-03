@@ -2,6 +2,7 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 project '/Volumes/SANDISK_MAC/MAPD_GITHUB/NEW_GIT_CLONE/StormBreaker_Group4_m3/ios/StormBreaker_Group4_m3.xcodeproj'
 
+
 platform :ios, '13.2.2'
 
 target 'StormBreaker_Group4_m3' do

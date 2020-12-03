@@ -40,15 +40,15 @@ const USR_ALCOHOL_USAGE = [
 
 const USR_GENDER = [
     {
-		key: 'male',
+		key: 'Male',
 		text: 'Male',
     },
     {
-		key: 'female',
+		key: 'Female',
 		text: 'Female',
     },
     {
-		key: 'other',
+		key: 'Other',
 		text: 'Other',
     },
 ];
@@ -127,44 +127,44 @@ class Add_Screen extends Component {
     
 
     fetchData=()=>{
-        const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
-        const data = {
-            firstName:this.state.firstName,
-            lastName:this.state.lastName,
-            dateOfBirth:this.state.dateOfBirth,
-            gender:this.state.gender,
-            address:Address,
-            patientContact:this.state.patientContact,
-            height:this.state.height,
-            weight:this.state.height,
-            currentlyOnMedication:this.state.currentlyOnMedication,
-            emergencyFirstName:this.state.emergencyFirstName,
-            emergencyLastName:this.state.emergencyLastName,
-            Relationship:this.state.Relationship,
-            diseases:this.state.diseases,
-            symptoms:this.state.symptoms,
-            consumeAlcohol:this.state.consumeAlcohol,
-            consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
-            condition:this.state.condition,
-            dateOfAdmission:this.state.dateOfAdmission
-        }
-        const url = "https://wecare-heroku.herokuapp.com/patients"
-        fetch(url,
-        {
-         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify(data)
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Success:', data);
-          })
-        .catch((error) => {
-        console.error('Error:', error);
-        });
+        // const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
+        // const data = {
+        //     firstName:this.state.firstName,
+        //     lastName:this.state.lastName,
+        //     dateOfBirth:this.state.dateOfBirth,
+        //     gender:this.state.gender,
+        //     address:Address,
+        //     patientContact:this.state.patientContact,
+        //     height:this.state.height,
+        //     weight:this.state.height,
+        //     currentlyOnMedication:this.state.currentlyOnMedication,
+        //     emergencyFirstName:this.state.emergencyFirstName,
+        //     emergencyLastName:this.state.emergencyLastName,
+        //     Relationship:this.state.Relationship,
+        //     diseases:this.state.diseases,
+        //     symptoms:this.state.symptoms,
+        //     consumeAlcohol:this.state.consumeAlcohol,
+        //     consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
+        //     condition:this.state.condition,
+        //     dateOfAdmission:this.state.dateOfAdmission
+        // }
+        // const url = "https://wecare-heroku.herokuapp.com/patients"
+        // fetch(url,
+        // {
+        //  headers: {
+        //   'Accept': 'application/json',
+        //   'Content-Type': 'application/json'
+        // },
+        // method: "POST",
+        // body: JSON.stringify(data)
+        // })
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     console.log('Success:', data);
+        //   })
+        // .catch((error) => {
+        // console.error('Error:', error);
+        // });
     }
 
     render()
@@ -218,7 +218,8 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_Gender_area}>
                         <Text style = {styles.add_patient_Gender}>Gender:</Text>
                         <View style = {styles.add_patient_Gender_sex}>
-                            <RB user_selection={USR_GENDER} />
+                            <RB user_selection={USR_GENDER}
+                            value = {this.state.gender} />
                         </View>
                     </View>
                     <View style = {styles.add_patient_Address_area}>
