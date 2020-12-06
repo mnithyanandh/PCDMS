@@ -10,91 +10,78 @@ import {
     ImageBackground} from 'react-native';
 import SearchableDropdown from 'react-native-searchable-dropdown';
 import { Divider, Button } from 'react-native-elements';
+import update from 'immutability-helper';
 import imageURL from './avatar.png';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
-var items = [
-    {
-        id: 1,
-        name: 'Karen, Jones | 04/02/1992 | 884-324-0930 | Pediatrics',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 2,
-        name: 'Kaylee, Matthews | 10/30/1999 | 884-098-9023 | Nursing',
-        pic: require('../pic.jpg')
-    },
-    {
-        id: 3,
-        name: 'Kendall, Alexander | 07/11/1942 | N/A | Immediate Care',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 4,
-        name: 'Briony, Morris | 27/73/4094 | 515-029-3856 | Nursing',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 5,
-        name: 'Freddie, Brown | 33/90/7254 | 909-630-2437 | Pediatrics',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 6,
-        name: 'Leonardo, Myers | 76/55/6304 | 093-450-8039 | Immediate Care',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 7,
-        name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 8,
-        name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 9,
-        name: 'Stella, Wright | 61/87/3391 | 792-256-0896 | Immediate Care',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 10,
-        name: 'George, Murray | 78/42/3681 | 905-242-3034 | Immediate Care',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 11,
-        name: 'Victoria, Evans | 82/29/0824 | 022-728-4438 | Nursing',
-        pic: require('./avatar.png'),
-    },
-    {
-        id: 12,
-        name: 'Amelia, Armstrong | 88/21/4432 | 590-851-6165 | Pediatrics',
-        pic: require('./avatar.png'),
-    },
-];
+var FNAME = [];
+var LNAME = [];
+var PHONE = [];
 
 class Search_Screen extends Component {
     constructor(props){
         super(props);
         this.state = {
             avatar: require('./avatar.png'),
-            selectedItems: [
-            {
-                id: 7,
-                name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics',
-            },
-            {
-                id: 8,
-                name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing',
-            }
-            ],
+            selectedItems: [],
+            user_fname_entry: '',
+            FirstName: '',
+            LastName: '',
+            PatientContact: '',
+            data_holder: []
         }
     };
+
+    fnameHandler=(text)=>{
+        this.setState({ 
+            FirstName: text 
+        })
+    };
+    lnameHandler=(text)=>{
+        this.setState({ 
+            LastName: text 
+        })
+    };
+    contactHandler=(text)=>{
+        this.setState({ 
+            PatientContact: text 
+        })
+    };
+
+    fetchData=()=>{
+        const url = 'https://wecare-heroku.herokuapp.com/patients/'
+        fetch(url)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    data_holder: data
+                })
+            })
+            .catch((error) => {
+            console.log(error)
+            .done();
+        });
+    }
+    
+    componentDidMount(){
+        this.fetchData();
+    };
     render(){
+        
+        const fname = this.state.data_holder.find((val) => {        
+            FNAME.push(val.firstName);
+            return val.firstName === this.state.FirstName;
+        });
+        console.log(this.state.FNAME);
+        const lname = this.state.data_holder.find((val) => {
+            LNAME.push(val.lastName);
+            return val.lastName === this.state.LastName;
+        });
+        const contact_no = this.state.data_holder.some((val) => {
+            return val.patientContact === this.state.PatientContact;
+        });
+
         return(
             <ImageBackground
                 source = { background }
@@ -132,15 +119,115 @@ class Search_Screen extends Component {
                                     { color: '#5a5a5a' }
                                 }
                                 itemsContainerStyle={
-                                    { maxHeight: 300 }
+                                    { maxHeight: 100 }
                                 }
-                                items={items}
-                                defaultIndex={2}
+                                items={FNAME}
+                                autoFocus={false}
+                                resetValue={false}
+                                textInputProps={
+                                {
+                                    placeholder: "Enter Patient's First Name here:",
+                                    underlineColorAndroid: "black",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        color: "#000000",
+                                        borderColor: '#000000',
+                                        borderRadius: 7,
+                                    },
+                                    onTextChange:()=>{this.fnameHandler}
+                                }
+                                }
+                                // onBlur={() => 
+                                // {
+                                //     i
+                                // }}
+                                listProps={
+                                {
+                                    nestedScrollEnabled: true,
+                                }
+                                }
+                            />
+                        </Fragment>
+                        <Fragment>
+                        <SearchableDropdown
+                                onItemSelect={(item) => {
+                                    const items = this.state.selectedItems;
+                                    items.push(item)
+                                    this.setState({ 
+                                        selectedItems: items,
+                                        avatar: item.pic
+                                    });
+                                }}
+                                containerStyle={{ padding: 15 }}
+                                itemStyle={{
+                                padding: 10,
+                                marginTop: 2,
+                                backgroundColor: '#ddd',
+                                borderColor: '#000000',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                }}
+                                itemTextStyle={
+                                    { color: '#5a5a5a' }
+                                }
+                                itemsContainerStyle={
+                                    { maxHeight: 100 }
+                                }
+                                items={LNAME}
                                 autoFocus={true}
                                 resetValue={false}
                                 textInputProps={
                                 {
-                                    placeholder: "Enter patient's name here:",
+                                    placeholder: "Enter Patient's Last Name here:",
+                                    underlineColorAndroid: "black",
+                                    style: {
+                                        padding: 12,
+                                        borderWidth: 1,
+                                        color: "#000000",
+                                        borderColor: '#000000',
+                                        borderRadius: 7,
+                                    },
+                                    onTextChange:()=>{this.lnameHandler}
+                                }
+                                }
+                                listProps={
+                                {
+                                    nestedScrollEnabled: true,
+                                }
+                                }
+                            />
+                        </Fragment>
+                        <Fragment>
+                            <SearchableDropdown
+                                onItemSelect={(item) => {
+                                    const items = this.state.selectedItems;
+                                    items.push(item)
+                                    this.setState({ 
+                                        selectedItems: items
+                                    });
+                                }}
+                                containerStyle={{ padding: 15 }}
+                                itemStyle={{
+                                padding: 10,
+                                marginTop: 2,
+                                backgroundColor: '#ddd',
+                                borderColor: '#000000',
+                                borderWidth: 1,
+                                borderRadius: 5,
+                                }}
+                                itemTextStyle={
+                                    { color: '#5a5a5a' }
+                                }
+                                itemsContainerStyle={
+                                    { maxHeight: 100 }
+                                }
+                                items={PHONE}
+                                autoFocus={true}
+                                resetValue={false}
+                                textInputProps={
+                                {
+                                    placeholder: "Enter patient's phone number here:",
                                     underlineColorAndroid: "black",
                                     style: {
                                         padding: 12,
@@ -149,7 +236,7 @@ class Search_Screen extends Component {
                                         borderColor: '#000000',
                                         borderRadius: 7,
                                     },
-                                    //onTextChange: text => alert(text)
+                                    onTextChange:()=> {this.contactHandler}
                                 }
                                 }
                                 listProps={
@@ -216,37 +303,3 @@ const styles = StyleSheet.create({
     }
 });
 export default Search_Screen
-
-
-{/* <View>
-    <TouchableOpacity onPress={()=>{}}>
-        <View style={{marginLeft: 80}}>
-            <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'} marginTop={10}/>
-            <Text>Logout</Text>
-        </View>
-    </TouchableOpacity>
-</View> */}
-
-{/* <View>
-    <TouchableOpacity onPress={()=>{}}>
-        <View style={{alignSelf: 'flex-start' }}>
-            <Icon name={'undo'} size={26} fontWeight={'bold'} color={'black'}/>
-            <Text>Logout</Text>
-        </View>
-    </TouchableOpacity>
-</View> */}
-/* constructor(props){
-    super(props);
-    this.state = {
-        selectedItems: [
-        {
-            id: 7,
-            name: 'Alan, Stewart | 06/26/1928 | 570-916-5367 | Pediatrics'
-        },
-        {
-            id: 8,
-            name: 'Lydia, Casey | 37/49/8523 | 683-281-9945 | Nursing'
-        }
-        ]
-    }
-}, */

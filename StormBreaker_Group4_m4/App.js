@@ -69,7 +69,7 @@ const AppNavigator = createStackNavigator({
   },
 },
 {
-    initialRouteName: "Splash_Screen"  
+    initialRouteName: "Search_Records"  
 });
 
 const styles = StyleSheet.create({

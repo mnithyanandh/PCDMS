@@ -77,6 +77,7 @@ class Auth_Screen extends Component {
                             underlineColorAndroid = 'transparent'
                             placeholder = 'Enter code here:'
                             autoCapitalize = 'none'
+                            clearTextOnFocus= {true}
                             onChangeText= {this.accessHandler}
                             />
                     </View>

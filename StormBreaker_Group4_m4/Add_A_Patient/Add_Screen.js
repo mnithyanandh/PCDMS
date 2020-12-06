@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ImageBackground, ScrollView , Alert} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Divider } from 'react-native-elements';
+import { Divider, Button } from 'react-native-elements';
 // import { RadioButton } from 'react-native-paper';
 import RB from '../RadioButton';
 import CB from '../CheckBox';
@@ -117,14 +117,19 @@ class Add_Screen extends Component {
         Relationship: '',
         diseases: '',
         symptoms: '',
+        // bloodPressure: '',
+        // respiratoryRate: '',
+        // bloodOxygenLevel: '',
+        // heartbeatRate: '',
         medicalAllergies: '',
         consumeAlcohol: false,
         consumeTobaccoOrSmoke: false,
         condition: 'Stable',
-        dateOfAdmission: new Date(),
     };
     
-    
+    clearText = () => {
+        this.setState({text: ''})
+    }
 
     fetchData=()=>{
         // const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
@@ -146,7 +151,6 @@ class Add_Screen extends Component {
         //     consumeAlcohol:this.state.consumeAlcohol,
         //     consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
         //     condition:this.state.condition,
-        //     dateOfAdmission:this.state.dateOfAdmission
         // }
         // const url = "https://wecare-heroku.herokuapp.com/patients"
         // fetch(url,
@@ -186,34 +190,40 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(firstName) => this.setState({ firstName })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_last_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Last Name'
                         autoCapitalize = 'none'
                         onChangeText={(lastName) => this.setState({ lastName })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_DOB_A_area}>
                         <Text style = {styles.add_patient_DOB}>DOB:</Text>
                         <TextInput style = {styles.add_patient_DOB_MM}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'MM'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_DOB_DD}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'DD'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_DOB_YYYY}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'YYYY'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        clearTextOnFocus={true}/>
                         <Text style = {styles.add_patient_DOA}>DOA:</Text>
                         <TextInput style = {styles.add_patient_DOA_Date}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Date'
-                        autoCapitalize = 'none'/>
+                        autoCapitalize = 'none'
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Gender_area}>
                         <Text style = {styles.add_patient_Gender}>Gender:</Text>
@@ -231,14 +241,16 @@ class Add_Screen extends Component {
                             autoCapitalize = 'none'
                             onChangeText={(address_line_1) => this.setState({ address_line_1 })}
                             ref={input => { this.textInput = input }}
-                            returnKeyType="go"/>
+                            returnKeyType="go"
+                            clearTextOnFocus={true}/>
                             <TextInput style = {styles.add_patient_Address_Line_entry_2}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'Line 2'
                             autoCapitalize = 'none'
                             onChangeText={(address_line_2) => this.setState({ address_line_2 })}
                             ref={input => { this.textInput = input }}
-                            returnKeyType="go"/>
+                            returnKeyType="go"
+                            clearTextOnFocus={true}/>
                             <View style = {styles.add_patient_Address_Province_area}>
                             <TextInput style = {styles.add_patient_Address_City_entry}
                             underlineColorAndroid = 'transparent'
@@ -246,14 +258,16 @@ class Add_Screen extends Component {
                             autoCapitalize = 'none'
                             onChangeText={(city) => this.setState({ city })}
                             ref={input => { this.textInput = input }}
-                            returnKeyType="go"/>
+                            returnKeyType="go"
+                            clearTextOnFocus={true}/>
                             <TextInput style = {styles.add_patient_Address_Province_entry}
                             underlineColorAndroid = 'transparent'
                             placeholder = 'PR'
                             autoCapitalize = 'none'
                             onChangeText={(province) => this.setState({ province })}
                             ref={input => { this.textInput = input }}
-                            returnKeyType="go"/>
+                            returnKeyType="go"
+                            clearTextOnFocus={true}/>
                             </View>
                         </View>   
                     </View>
@@ -265,7 +279,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(patientContact) => this.setState({ patientContact })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_measurements_area}>
                         <Text style = {styles.add_patient_height_lbl}>Height:</Text>
@@ -275,7 +290,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(height) => this.setState({ height })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                         <Text style = {styles.add_patient_weight_lbl}>Weight:</Text>
                         <TextInput style = {styles.add_patient_weight}
                         underlineColorAndroid = 'transparent'
@@ -283,7 +299,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(weight) => this.setState({ weight })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Medications_area}>
                         <Text style = {styles.add_patient_meds_lbl}>Currently on Medications?:</Text>
@@ -312,7 +329,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(emergencyContact) => this.setState({ emergencyContact })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_E_name_area}>
                         <TextInput style = {styles.add_patient_Efirst_name}
@@ -321,14 +339,16 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(emergencyFirstName) => this.setState({ emergencyFirstName })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_Elast_name}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'Last Name'
                         autoCapitalize = 'none'
                         onChangeText={(emergencyLastName) => this.setState({ emergencyLastName })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_ERelationship_area}>
                         <Text style = {styles.add_patient_ERelationship_Lbl}>Relationship:</Text>
@@ -338,7 +358,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(Relationship) => this.setState({ Relationship })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Existing_Condtns_area}>
                         <Text style = {styles.add_patient_Existing_Condtns_lbl}>Check the following existing health conditions that apply to the patient:</Text>
@@ -361,7 +382,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(diseases) => this.setState({ diseases })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Current_Symptoms_area}>
                         <Text style = {styles.add_patient_Current_Symptoms_lbl}>Current symptoms that apply to the patient:</Text>
@@ -373,7 +395,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(symptoms) => this.setState({ symptoms })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Medical_Allergies_area}>
                         <Text style = {styles.add_patient_Medical_Allergies}>Does the patient have any medical allergies?:</Text>
@@ -391,7 +414,8 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(medicalAllergies) => this.setState({ medicalAllergies })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
                     <View style = {styles.add_patient_Alcohol_area}>
                         <Text style = {styles.add_patient_Alcohol_lbl}>How often does the patient consume alcohol?:</Text>
@@ -416,16 +440,34 @@ class Add_Screen extends Component {
                         autoCapitalize = 'none'
                         onChangeText={(province) => this.setState({ province })}
                         ref={input => { this.textInput = input }}
-                        returnKeyType="go"/>
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
                     </View>
-                    <View style={styles.container}>
-                        <Button style={styles.search_button}
-                            title="Submit"
-                            onPress={() => this.bindSubmitClick()} 
-                            borderColor="#000000"
-                            // raised = {true}
-                            />
-                    </View>
+                    <Button style={styles.submit_button}
+                    color = "#000000"
+                    title="Submit"
+                    onPress={() => 
+                        {
+                            Alert.alert(
+                                "Are you sure you want to proceed?",
+                                "Press Cancel to double-check patient data. Press OK to proceed",
+                                [
+                                    {
+                                        text: "Cancel",
+                                        onPress: () => this.clearText,
+                                        style: "cancel"
+                                    },
+                                    {
+                                        text: "OK",
+                                        onPress: () => this.bindSubmitClick(),
+                                        style: "Ok"
+                                    }
+                                ]
+                            )
+                        }
+                    }
+                    borderColor="#000000"/>
+                    <Divider style={{ marginTop: 20, backgroundColor: 'black', height: 1, zIndex: 1}} />
                 </ScrollView>
             </ImageBackground>
         );
@@ -440,7 +482,9 @@ class Add_Screen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ecf0f1'
+        backgroundColor: '#ecf0f1',
+        justifyContent: 'center', 
+        alignItems: 'center'
     },
     add_render: {
         marginTop: 10,
@@ -450,10 +494,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
     },
-    search_button: {
-        position: 'absolute',
-        top: 20,
-        left: 40
+    submit_button: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     add_render_text: {
         fontSize: 30,
