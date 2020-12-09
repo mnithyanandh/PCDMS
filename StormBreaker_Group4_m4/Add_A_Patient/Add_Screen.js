@@ -102,6 +102,7 @@ class Add_Screen extends Component {
         firstName: '',
         lastName: '',
         dateOfBirth: new Date(),
+        dateOfAdmission : new Date(),
         gender: 'Male',
         address_line_1: '',
         address_line_2: '',
@@ -117,10 +118,10 @@ class Add_Screen extends Component {
         Relationship: '',
         diseases: '',
         symptoms: '',
-        // bloodPressure: '',
-        // respiratoryRate: '',
-        // bloodOxygenLevel: '',
-        // heartbeatRate: '',
+        bloodPressure: '',
+        respiratoryRate: '',
+        bloodOxygenLevel: '',
+        heartbeatRate: '',
         medicalAllergies: '',
         consumeAlcohol: false,
         consumeTobaccoOrSmoke: false,
@@ -132,43 +133,48 @@ class Add_Screen extends Component {
     }
 
     fetchData=()=>{
-        // const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
-        // const data = {
-        //     firstName:this.state.firstName,
-        //     lastName:this.state.lastName,
-        //     dateOfBirth:this.state.dateOfBirth,
-        //     gender:this.state.gender,
-        //     address:Address,
-        //     patientContact:this.state.patientContact,
-        //     height:this.state.height,
-        //     weight:this.state.height,
-        //     currentlyOnMedication:this.state.currentlyOnMedication,
-        //     emergencyFirstName:this.state.emergencyFirstName,
-        //     emergencyLastName:this.state.emergencyLastName,
-        //     Relationship:this.state.Relationship,
-        //     diseases:this.state.diseases,
-        //     symptoms:this.state.symptoms,
-        //     consumeAlcohol:this.state.consumeAlcohol,
-        //     consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
-        //     condition:this.state.condition,
-        // }
-        // const url = "https://wecare-heroku.herokuapp.com/patients"
-        // fetch(url,
-        // {
-        //  headers: {
-        //   'Accept': 'application/json',
-        //   'Content-Type': 'application/json'
-        // },
-        // method: "POST",
-        // body: JSON.stringify(data)
-        // })
-        // .then((response) => response.json())
-        // .then((data) => {
-        //     console.log('Success:', data);
-        //   })
-        // .catch((error) => {
-        // console.error('Error:', error);
-        // });
+        const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
+        const data = {
+            firstName:this.state.firstName,
+            lastName:this.state.lastName,
+            dateOfBirth:this.state.dateOfBirth,
+            dateOfAdmission:this.state.dateOfAdmission,
+            gender:this.state.gender,
+            address:Address,
+            patientContact:this.state.patientContact,
+            height:this.state.height,
+            weight:this.state.height,
+            bloodPressure:this.state.bloodPressure,
+            respiratoryRate:this.state.respiratoryRate,
+            bloodOxygenLevel:this.state.bloodOxygenLevel,
+            heartbeatRate:this.state.heartbeatRate,
+            currentlyOnMedication:this.state.currentlyOnMedication,
+            emergencyFirstName:this.state.emergencyFirstName,
+            emergencyLastName:this.state.emergencyLastName,
+            Relationship:this.state.Relationship,
+            diseases:this.state.diseases,
+            symptoms:this.state.symptoms,
+            consumeAlcohol:this.state.consumeAlcohol,
+            consumeTobaccoOrSmoke:this.state.consumeTobaccoOrSmoke,
+            condition:this.state.condition,
+        }
+        const url = "https://wecare-heroku.herokuapp.com/patients"
+        fetch(url,
+        {
+         headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+          })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
     }
 
     render()
@@ -302,23 +308,79 @@ class Add_Screen extends Component {
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
+                    <View style = {styles.add_patient_measurements_area}>
+                        <Text style = {styles.add_patient_height_lbl}>Blood Pressure Stats:</Text>
+                        <TextInput style = {styles.add_patient_height}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Enter Blood Pressure Stats'
+                        autoCapitalize = 'none'
+                        onChangeText={(bloodPressure) => this.setState({ bloodPressure })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
+                    </View>
+                    <View style = {styles.add_patient_measurements_area}>
+                        <Text style = {styles.add_patient_weight_lbl}>Respiratory Rate Stats:</Text>
+                        <TextInput style = {styles.add_patient_weight}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Enter Respiratory Rate Stats'
+                        autoCapitalize = 'none'
+                        onChangeText={(respiratoryRate) => this.setState({ respiratoryRate })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
+                    </View>
+                    <View style = {styles.add_patient_measurements_area}>
+                        <Text style = {styles.add_patient_height_lbl}>Blood Oxygen Level Stats:</Text>
+                        <TextInput style = {styles.add_patient_height}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Enter Blood Oxygen Level Stats'
+                        autoCapitalize = 'none'
+                        onChangeText={(bloodOxygenLevel) => this.setState({ bloodOxygenLevel })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
+                    </View>
+                    <View style = {styles.add_patient_measurements_area}>
+                        <Text style = {styles.add_patient_weight_lbl}>Heart Rate Stats:</Text>
+                        <TextInput style = {styles.add_patient_weight}
+                        underlineColorAndroid = 'transparent'
+                        placeholder = 'Enter Heart Rate Stats'
+                        autoCapitalize = 'none'
+                        onChangeText={(heartbeatRate) => this.setState({ heartbeatRate })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"
+                        clearTextOnFocus={true}/>
+                    </View>
                     <View style = {styles.add_patient_Medications_area}>
                         <Text style = {styles.add_patient_meds_lbl}>Currently on Medications?:</Text>
                         <View style={styles.add_patient_medications_choice}>
                             <View style = {styles.row_wise_radio_YES_NO}>
-                                <RB user_selection={USR_YES_NO} />
+                                <RB user_selection={USR_YES_NO}
+                                //     on={() => {
+                                //         if (USR_YES_NO.key == 'true'){
+                                //             this.setState.currentlyOnMedication = true
+                                //             console.log(this.state.currentlyOnMedication)
+                                //         }
+                                //         else{
+                                //             this.setState.currentlyOnMedication = false
+                                //             console.log(this.state.currentlyOnMedication)
+                                //         }
+                                //     }   
+                                // }
+                                />
                             </View>
                         </View>
                     </View>
                     <View style = {styles.add_patient_meds_specification_area}>
-                        <Text style = {styles.add_patient_meds_YES_lbl}>if yes, please specify:</Text>
+                        <Text style = {styles.add_patient_meds_YES_lbl}>if Yes, please specify:</Text>
                         <TextInput style = {styles.add_patient_meds_specs}
                         underlineColorAndroid = 'transparent'
                         placeholder = 'others please specify here:'
                         autoCapitalize = 'none'
-                        // onChangeText={(currentlyOnMedication) => this.setState({ currentlyOnMedication })}
-                        // ref={input => { this.textInput = input }}
-                        // returnKeyType="go"
+                        onChangeText={(currentlyOnMedication) => this.setState({ currentlyOnMedication })}
+                        ref={input => { this.textInput = input }}
+                        returnKeyType="go"
                         />
                     </View>
                     <View style = {styles.add_patient_EPhone_Number_area}>

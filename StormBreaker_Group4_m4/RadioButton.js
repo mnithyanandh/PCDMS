@@ -26,7 +26,7 @@ import {
                                     this.setState({
                                         value: res.key
                                     });
-                                    console.log(this.state.value);
+                                    // console.log(this.state.value);
                                 }}>
                                   {
                                   value == res.key && 
@@ -36,7 +36,6 @@ import {
                         </View>
                     );
                 })}
-                {/* <Text> Selected: {this.state.value} </Text> */}
             </View>
         );
     }

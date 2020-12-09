@@ -15,9 +15,87 @@ import imageURL from './avatar.png';
 
 // Declare some global variables for storing the location of the background image:
 var background = require('../background.png');
-var FNAME = [];
-var LNAME = [];
-var PHONE = [];
+var FNAME = [
+    {
+        id: 1,
+        name: 'Karen',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 2,
+        name: 'Kaylee',
+        pic: require('./avatar.png')
+    },
+    {
+        id: 3,
+        name: 'Kendall',
+        pic: require('../pic.jpg'),
+    },
+    {
+        id: 4,
+        name: 'Briony',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 5,
+        name: 'Freddie',
+        pic: require('./avatar.png'),
+    },
+];
+var LNAME = [
+    {
+        id: 1,
+        name: 'Jones',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 2,
+        name: 'Matthews',
+        pic: require('./avatar.png')
+    },
+    {
+        id: 3,
+        name: 'Alexander',
+        pic: require('../pic.jpg'),
+    },
+    {
+        id: 4,
+        name: 'Morris',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 5,
+        name: 'Brown',
+        pic: require('./avatar.png'),
+    },
+];
+var PHONE = [
+    {
+        id: 1,
+        name: '884-324-0930',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 2,
+        name: '84-098-9023',
+        pic: require('./avatar.png')
+    },
+    {
+        id: 3,
+        name: '511-251-1406',
+        pic: require('../pic.jpg'),
+    },
+    {
+        id: 4,
+        name: '515-029-3856',
+        pic: require('./avatar.png'),
+    },
+    {
+        id: 5,
+        name: '909-630-2437',
+        pic: require('./avatar.png'),
+    },
+];
 
 class Search_Screen extends Component {
     constructor(props){
@@ -139,9 +217,6 @@ class Search_Screen extends Component {
                                 }
                                 }
                                 // onBlur={() => 
-                                // {
-                                //     i
-                                // }}
                                 listProps={
                                 {
                                     nestedScrollEnabled: true,

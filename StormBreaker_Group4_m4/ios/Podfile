@@ -19,10 +19,16 @@ target 'StormBreaker_Group4_m3' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable these next few lines.
-  use_flipper!
-  post_install do |installer|
-    flipper_post_install(installer)
-  end
+  #use_flipper!
+  #post_install do |installer|
+    #flipper_post_install(installer)
+	#installer.pods_project.targets.each do |target|
+            #if target.name == 'YogaKit'
+              #target.build_configurations.each do |config|
+                #config.build_settings['SWIFT_VERSION'] = '4.1'
+	#end
+     #end
+  #end
 end
 
 target 'StormBreaker_Group4_m3-tvOS' do
