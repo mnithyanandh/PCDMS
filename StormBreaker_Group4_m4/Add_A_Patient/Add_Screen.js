@@ -191,16 +191,18 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_name_area}>
                         <Text style = {styles.add_patient_name}>Name:</Text>
                         <TextInput style = {styles.add_patient_first_name}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'First Name'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(firstName) => this.setState({ firstName })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_last_name}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'Last Name'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(lastName) => this.setState({ lastName })}
                         ref={input => { this.textInput = input }}
@@ -210,24 +212,28 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_DOB_A_area}>
                         <Text style = {styles.add_patient_DOB}>DOB:</Text>
                         <TextInput style = {styles.add_patient_DOB_MM}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'MM'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_DOB_DD}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'DD'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_DOB_YYYY}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'YYYY'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         clearTextOnFocus={true}/>
                         <Text style = {styles.add_patient_DOA}>DOA:</Text>
                         <TextInput style = {styles.add_patient_DOA_Date}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Date'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Today'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         clearTextOnFocus={true}/>
                     </View>
@@ -242,46 +248,51 @@ class Add_Screen extends Component {
                         <Text style = {styles.add_patient_Address_Lbl}>Address:</Text>
                         <View style = {styles.add_patient_Address_Line_area}>
                             <TextInput style = {styles.add_patient_Address_Line_entry_1}
-                            underlineColorAndroid = 'transparent'
+                            underlineColorAndroid = "transparent"
                             placeholder = 'Line 1'
+                            placeholderTextColor="#808080"
                             autoCapitalize = 'none'
                             onChangeText={(address_line_1) => this.setState({ address_line_1 })}
                             ref={input => { this.textInput = input }}
                             returnKeyType="go"
                             clearTextOnFocus={true}/>
                             <TextInput style = {styles.add_patient_Address_Line_entry_2}
-                            underlineColorAndroid = 'transparent'
+                            underlineColorAndroid = "transparent"
                             placeholder = 'Line 2'
+                            placeholderTextColor="#808080"
                             autoCapitalize = 'none'
                             onChangeText={(address_line_2) => this.setState({ address_line_2 })}
                             ref={input => { this.textInput = input }}
                             returnKeyType="go"
                             clearTextOnFocus={true}/>
                             <View style = {styles.add_patient_Address_Province_area}>
-                            <TextInput style = {styles.add_patient_Address_City_entry}
-                            underlineColorAndroid = 'transparent'
-                            placeholder = 'City'
-                            autoCapitalize = 'none'
-                            onChangeText={(city) => this.setState({ city })}
-                            ref={input => { this.textInput = input }}
-                            returnKeyType="go"
-                            clearTextOnFocus={true}/>
-                            <TextInput style = {styles.add_patient_Address_Province_entry}
-                            underlineColorAndroid = 'transparent'
-                            placeholder = 'PR'
-                            autoCapitalize = 'none'
-                            onChangeText={(province) => this.setState({ province })}
-                            ref={input => { this.textInput = input }}
-                            returnKeyType="go"
-                            clearTextOnFocus={true}/>
+                                <TextInput style = {styles.add_patient_Address_City_entry}
+                                underlineColorAndroid = "transparent"
+                                placeholder = 'City'
+                                placeholderTextColor="#808080"
+                                autoCapitalize = 'none'
+                                onChangeText={(city) => this.setState({ city })}
+                                ref={input => { this.textInput = input }}
+                                returnKeyType="go"
+                                clearTextOnFocus={true}/>
+                                <TextInput style = {styles.add_patient_Address_Province_entry}
+                                underlineColorAndroid = "transparent"
+                                placeholder = 'PR'
+                                placeholderTextColor="#808080"
+                                autoCapitalize = 'none'
+                                onChangeText={(province) => this.setState({ province })}
+                                ref={input => { this.textInput = input }}
+                                returnKeyType="go"
+                                clearTextOnFocus={true}/>
                             </View>
                         </View>   
                     </View>
                     <View style = {styles.add_patient_Phone_Number_area}>
                         <Text style = {styles.add_patient_Phone_Number}>Phone Number:</Text>
                         <TextInput style = {styles.add_patient_Phone}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'Phone Number'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(patientContact) => this.setState({ patientContact })}
                         ref={input => { this.textInput = input }}
@@ -291,8 +302,9 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_measurements_area}>
                         <Text style = {styles.add_patient_height_lbl}>Height:</Text>
                         <TextInput style = {styles.add_patient_height}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'in cm'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(height) => this.setState({ height })}
                         ref={input => { this.textInput = input }}
@@ -300,52 +312,57 @@ class Add_Screen extends Component {
                         clearTextOnFocus={true}/>
                         <Text style = {styles.add_patient_weight_lbl}>Weight:</Text>
                         <TextInput style = {styles.add_patient_weight}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'in lbs'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'in kgs'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(weight) => this.setState({ weight })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
-                    <View style = {styles.add_patient_measurements_area}>
-                        <Text style = {styles.add_patient_height_lbl}>Blood Pressure Stats:</Text>
-                        <TextInput style = {styles.add_patient_height}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Enter Blood Pressure Stats'
+                    <View style = {styles.add_patient_BP_area}>
+                        <Text style = {styles.add_patient_BP_lbl}>Blood Pressure:</Text>
+                        <TextInput style = {styles.add_patient_BP}
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Ex: 70/120'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(bloodPressure) => this.setState({ bloodPressure })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
-                    <View style = {styles.add_patient_measurements_area}>
-                        <Text style = {styles.add_patient_weight_lbl}>Respiratory Rate Stats:</Text>
-                        <TextInput style = {styles.add_patient_weight}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Enter Respiratory Rate Stats'
+                    <View style = {styles.add_patient_RR_area}>
+                        <Text style = {styles.add_patient_RR_lbl}>Respiratory Rate:</Text>
+                        <TextInput style = {styles.add_patient_RR}
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Ex: 30/min'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(respiratoryRate) => this.setState({ respiratoryRate })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
-                    <View style = {styles.add_patient_measurements_area}>
-                        <Text style = {styles.add_patient_height_lbl}>Blood Oxygen Level Stats:</Text>
-                        <TextInput style = {styles.add_patient_height}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Enter Blood Oxygen Level Stats'
+                    <View style = {styles.add_patient_BOL_area}>
+                        <Text style = {styles.add_patient_BOL_lbl}>Blood Oxygen{"\n"} Level:</Text>
+                        <TextInput style = {styles.add_patient_BOL}
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Ex: 95%'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(bloodOxygenLevel) => this.setState({ bloodOxygenLevel })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
-                    <View style = {styles.add_patient_measurements_area}>
-                        <Text style = {styles.add_patient_weight_lbl}>Heart Rate Stats:</Text>
-                        <TextInput style = {styles.add_patient_weight}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Enter Heart Rate Stats'
+                    <View style = {styles.add_patient_HR_area}>
+                        <Text style = {styles.add_patient_HR_lbl}>Heart Rate:</Text>
+                        <TextInput style = {styles.add_patient_HR}
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Ex: 75/min'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(heartbeatRate) => this.setState({ heartbeatRate })}
                         ref={input => { this.textInput = input }}
@@ -373,10 +390,11 @@ class Add_Screen extends Component {
                         </View>
                     </View>
                     <View style = {styles.add_patient_meds_specification_area}>
-                        <Text style = {styles.add_patient_meds_YES_lbl}>if Yes, please specify:</Text>
+                        <Text style = {styles.add_patient_meds_YES_lbl}>if yes,</Text>
                         <TextInput style = {styles.add_patient_meds_specs}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'others please specify here:'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'please specify here:'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(currentlyOnMedication) => this.setState({ currentlyOnMedication })}
                         ref={input => { this.textInput = input }}
@@ -386,8 +404,9 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_EPhone_Number_area}>
                         <Text style = {styles.add_patient_EPhone_Number}>Emergency Phone No.:</Text>
                         <TextInput style = {styles.add_patient_EPhone}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'Phone Number'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(emergencyContact) => this.setState({ emergencyContact })}
                         ref={input => { this.textInput = input }}
@@ -396,16 +415,18 @@ class Add_Screen extends Component {
                     </View>
                     <View style = {styles.add_patient_E_name_area}>
                         <TextInput style = {styles.add_patient_Efirst_name}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'First Name'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(emergencyFirstName) => this.setState({ emergencyFirstName })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                         <TextInput style = {styles.add_patient_Elast_name}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'Last Name'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(emergencyLastName) => this.setState({ emergencyLastName })}
                         ref={input => { this.textInput = input }}
@@ -415,8 +436,9 @@ class Add_Screen extends Component {
                     <View style = {styles.add_patient_ERelationship_area}>
                         <Text style = {styles.add_patient_ERelationship_Lbl}>Relationship:</Text>
                         <TextInput style = {styles.add_patient_ERelationship}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'Relationship to contact:'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'Relationship to contact?'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(Relationship) => this.setState({ Relationship })}
                         ref={input => { this.textInput = input }}
@@ -439,8 +461,9 @@ class Add_Screen extends Component {
                     </View>
                     <View>
                         <TextInput style = {styles.add_patient_Existing_Condtns_other}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'others please specify here:'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'please specify here:'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(diseases) => this.setState({ diseases })}
                         ref={input => { this.textInput = input }}
@@ -452,8 +475,9 @@ class Add_Screen extends Component {
                     </View>
                     <View>
                         <TextInput style = {styles.add_patient_Current_Symptoms_other}
-                        underlineColorAndroid = 'transparent'
+                        underlineColorAndroid = "transparent"
                         placeholder = 'please specify here symptoms here:'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(symptoms) => this.setState({ symptoms })}
                         ref={input => { this.textInput = input }}
@@ -469,10 +493,12 @@ class Add_Screen extends Component {
                         </View>
                     </View>
                     <View style = {styles.add_patient_Medical_Allergies_YES_area}>
-                        <Text style = {styles.add_patient_Medical_Allergies_YES_lbl}>if yes, please specify:</Text>
+                        <Text style = {styles.add_patient_Medical_Allergies_YES_lbl}>if yes, please {"\n"}
+                        specify them here:</Text>
                         <TextInput style = {styles.add_patient_Medical_Allergies_YES_specs}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'others please specify here:'
+                        underlineColorAndroid = "transparent"
+                        placeholder = ':'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(medicalAllergies) => this.setState({ medicalAllergies })}
                         ref={input => { this.textInput = input }}
@@ -497,14 +523,16 @@ class Add_Screen extends Component {
                         <Text style = {styles.add_patient_Tobacco_YES_lbl}>if yes, please {"\n"}
                         specify how often:</Text>
                         <TextInput style = {styles.add_patient_Tobacco_YES_specs}
-                        underlineColorAndroid = 'transparent'
-                        placeholder = 'others please specify here:'
+                        underlineColorAndroid = "transparent"
+                        placeholder = 'please specify here:'
+                        placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(province) => this.setState({ province })}
                         ref={input => { this.textInput = input }}
                         returnKeyType="go"
                         clearTextOnFocus={true}/>
                     </View>
+                    <View style = {styles.add_Button_area}>
                     <Button style={styles.submit_button}
                     color = "#000000"
                     title="Submit"
@@ -529,6 +557,31 @@ class Add_Screen extends Component {
                         }
                     }
                     borderColor="#000000"/>
+                    <Button style={styles.cancel_button}
+                    color = "#000000"
+                    title="Cancel"
+                    onPress={() => 
+                        {
+                            Alert.alert(
+                                "Clear Patient Form?",
+                                "Press Cancel to go back to editing. Press OK to clear the form.",
+                                [
+                                    {
+                                        text: "Cancel",
+                                        onPress: () => this.clearText,
+                                        style: "cancel"
+                                    },
+                                    {
+                                        text: "OK",
+                                        onPress: () => this.bindSubmitClick(),
+                                        style: "Ok"
+                                    }
+                                ]
+                            )
+                        }
+                    }
+                    borderColor="#000000"/>
+                    </View>
                     <Divider style={{ marginTop: 20, backgroundColor: 'black', height: 1, zIndex: 1}} />
                 </ScrollView>
             </ImageBackground>
@@ -556,7 +609,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
     },
+    add_Button_area: {
+        height: 50,
+        width: 400,
+        marginTop: 10,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-around',
+        alignItems: 'center'
+    },
     submit_button: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    cancel_button: {
         fontSize: 30,
         fontWeight: 'bold',
         justifyContent: 'center',
@@ -569,7 +639,7 @@ const styles = StyleSheet.create({
     add_patient_name_area: {
         height: 50,
         width: 400,
-        marginTop: 10,
+        marginTop: 20,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -590,6 +660,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 150,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_last_name: {
@@ -597,6 +668,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 150,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_DOB_A_area: {
@@ -623,6 +695,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 50,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_DOB_DD: {
@@ -630,6 +703,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 50,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_DOB_YYYY: {
@@ -637,6 +711,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 60,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_DOA: {
@@ -652,6 +727,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 100,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Gender_area: {
@@ -672,13 +748,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
     },
-    // add_patient_Gender_sex: {
-    //     margin: 15,
-    //     height: 40,
-    //     width: 250,
-    //     borderWidth: 1,
-    //     padding: 10,
-    // },
     add_patient_Gender_sex: {
         marginTop: 15,
         fontSize: 20,
@@ -690,7 +759,7 @@ const styles = StyleSheet.create({
     add_patient_Address_area: {
         height: 50,
         width: 400,
-        marginTop: 10,
+        marginTop: 20,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -700,7 +769,7 @@ const styles = StyleSheet.create({
     },
     add_patient_Address_Lbl: {
         fontSize: 20,
-        marginLeft: 40,
+        marginLeft: 100,
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
@@ -709,11 +778,12 @@ const styles = StyleSheet.create({
         height: 120,
         width: 400,
         marginTop: 70,
-        fontSize: 20, 
+        fontSize: 20,
+        marginLeft: 70,
         fontWeight: '600', 
         color: '#0022E1',
         flexDirection: 'column',
-        justifyContent:'space-around',
+        justifyContent:'space-evenly',
         alignItems: 'center'
     },
     add_patient_Address_Line_entry_1: {
@@ -722,6 +792,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         width: 250,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Address_Line_entry_2: {
@@ -729,36 +800,38 @@ const styles = StyleSheet.create({
         height: 40,
         width: 250,
         borderWidth: 1,
-        padding: 10,
-    },
-    add_patient_Address_City_entry:{
-        marginTop: 50,
-        height: 40,
-        width: 150,
-        borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Address_Province_area: {
         height: 50,
         width: 210,
         fontSize: 20, 
+        marginTop: 25,
         fontWeight: '600', 
         color: '#0022E1',
         flexDirection: 'row',
-        justifyContent:'space-around',
+        justifyContent:'space-evenly',
         alignItems: 'center'
     },
-    add_patient_Address_Province_entry:{
-        marginTop: 50,
+    add_patient_Address_City_entry:{
         height: 40,
-        width: 50,
+        width: 140,
         borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    add_patient_Address_Province_entry:{
+        height: 40,
+        width: 60,
+        borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Phone_Number_area: {
         height: 50,
         width: 400,
-        marginTop: 115,
+        marginTop: 120,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -778,12 +851,13 @@ const styles = StyleSheet.create({
         height: 40,
         width: 220,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_measurements_area: {
         height: 50,
         width: 400,
-        marginTop: 5,
+        marginTop: 20,
         fontSize: 20, 
         fontWeight: '600', 
         color: '#0022E1',
@@ -794,7 +868,6 @@ const styles = StyleSheet.create({
     add_patient_height_lbl: {
         fontSize: 20,
         marginLeft: 20,
-        marginRight: 10,
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
@@ -802,23 +875,124 @@ const styles = StyleSheet.create({
     add_patient_weight_lbl: {
         fontSize: 20,
         marginLeft: 10,
-        marginRight: 10,
         fontWeight: 'bold',
         alignSelf: 'center',
         justifyContent: 'center',
     },
     add_patient_height: {
-        margin: 20,
         height: 40,
-        width: 70,
+        width: 100,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_weight: {
-        margin: 20,
         height: 40,
-        width: 70,
+        width: 100,
         borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    add_patient_BP_area: {
+        height: 50,
+        width: 400,
+        marginTop: 20,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-evenly',
+        alignItems: 'center'
+    },
+    add_patient_RR_area: {
+        height: 50,
+        width: 400,
+        marginTop: 20,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-evenly',
+        alignItems: 'center'
+    },
+    add_patient_BOL_area: {
+        height: 50,
+        width: 400,
+        marginTop: 20,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-evenly',
+        alignItems: 'center'
+    },
+    add_patient_HR_area: {
+        height: 50,
+        width: 400,
+        marginTop: 20,
+        fontSize: 20, 
+        fontWeight: '600', 
+        color: '#0022E1',
+        flexDirection: 'row',
+        justifyContent:'space-evenly',
+        alignItems: 'center'
+    },
+    add_patient_BP_lbl: {
+        fontSize: 20,
+        marginLeft: 20,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_RR_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_BOL_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    add_patient_HR_lbl: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    add_patient_BP: {
+        height: 40,
+        width: 210,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    add_patient_RR: {
+        height: 40,
+        width: 180,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    add_patient_BOL: {
+        margin: 10,
+        height: 40,
+        width: 190,
+        borderWidth: 1,
+        borderRadius: 10,
+        padding: 10,
+    },
+    add_patient_HR: {
+        height: 40,
+        width: 230,
+        borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Medications_area: {
@@ -870,6 +1044,7 @@ const styles = StyleSheet.create({
         height: 150,
         width: 220,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     row_wise_radio_YES_NO: {
@@ -902,6 +1077,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 160,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_E_name_area: {
@@ -920,6 +1096,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 180,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Elast_name: {
@@ -927,6 +1104,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 180,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_ERelationship_area: {
@@ -952,6 +1130,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 220,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Existing_Condtns_area: {
@@ -986,6 +1165,7 @@ const styles = StyleSheet.create({
         height: 40,
         width: 380,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Current_Symptoms_area: {
@@ -1010,6 +1190,7 @@ const styles = StyleSheet.create({
         height: 80,
         width: 380,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Medical_Allergies_area: {
@@ -1060,6 +1241,7 @@ const styles = StyleSheet.create({
         height: 150,
         width: 220,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
     add_patient_Alcohol_area: {
@@ -1129,6 +1311,8 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontWeight: 'bold',
         alignSelf: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
     },
     add_patient_Tobacco_YES_specs: {
@@ -1136,38 +1320,9 @@ const styles = StyleSheet.create({
         height: 150,
         width: 220,
         borderWidth: 1,
+        borderRadius: 10,
         padding: 10,
     },
 })
-
-
-{/* <Toolbar>
-    <ToolbarBackAction
-        onPress={this._goBack}/>
-    <ToolbarContent
-        title="Title"
-        subtitle="Subtitle"/>
-    <ToolbarAction icon="search" onPress={this._onSearch} />
-    <ToolbarAction icon="more-vert" onPress={this._onMore} />
-</Toolbar> 
-*/}
-//  <DropDownPicker
-//     items={[
-//         {label: 'ON'},
-//         {label: 'BC'},
-//         {label: 'NS'},
-//         {label: 'NB'},
-//         {label: 'PEI'},
-//     ]}
-//     //defaultValue={this.state.whatever}
-//     containerStyle={{height: 30, width: 135}}
-//     style={{backgroundColor: '#e9e5e4', borderColor: '#fff', marginLeft: 3}}
-//     itemStyle={{
-//         justifyContent: 'flex-start'
-//     }}
-//     dropDownStyle={{backgroundColor: '#fafafa'}}/>
-//     /* onChangeItem={item => this.setState({
-//         whatever
-//         })}
 
 export default Add_Screen
