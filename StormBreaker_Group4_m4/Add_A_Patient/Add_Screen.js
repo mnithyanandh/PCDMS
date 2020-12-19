@@ -129,10 +129,11 @@ class Add_Screen extends Component {
     };
     
     clearText = () => {
-        this.setState({text: ''})
+        this.setState({firstName: ''})
+        this.setState({lastName: ''})
     }
 
-    fetchData=()=>{
+    fetchData = () => {
         const Address = this.state.address_line_1+','+this.state.address_line_2+','+this.state.city+','+this.state.province
         const data = {
             firstName:this.state.firstName,
@@ -476,7 +477,7 @@ class Add_Screen extends Component {
                     <View>
                         <TextInput style = {styles.add_patient_Current_Symptoms_other}
                         underlineColorAndroid = "transparent"
-                        placeholder = 'please specify here symptoms here:'
+                        placeholder = 'specify symptoms here:'
                         placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(symptoms) => this.setState({ symptoms })}
@@ -497,7 +498,7 @@ class Add_Screen extends Component {
                         specify them here:</Text>
                         <TextInput style = {styles.add_patient_Medical_Allergies_YES_specs}
                         underlineColorAndroid = "transparent"
-                        placeholder = ':'
+                        placeholder = 'specify allergies here:'
                         placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(medicalAllergies) => this.setState({ medicalAllergies })}
@@ -573,7 +574,7 @@ class Add_Screen extends Component {
                                     },
                                     {
                                         text: "OK",
-                                        onPress: () => this.bindSubmitClick(),
+                                        onPress: () => this.bindCancelClick(),
                                         style: "Ok"
                                     }
                                 ]
@@ -590,6 +591,10 @@ class Add_Screen extends Component {
     bindSubmitClick=()=>{
         this.fetchData();
         this.props.navigation.navigate('Home');
+    };
+    
+    bindCancelClick = () => {
+        this.clearText();
     };
 };
 
