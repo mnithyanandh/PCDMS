@@ -3,8 +3,6 @@ import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
-import Auth_ScreenApp from './Authentication/Auth_screen';
 import SearchApp from './Search_A_Patient/Search_Screen';
 import Add_Screen from './Add_A_Patient/Add_Screen';
 import ActivePatients_Screen from './Active_Patient_Cases/ActivePatients_Screen';

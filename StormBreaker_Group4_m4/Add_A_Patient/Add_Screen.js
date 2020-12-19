@@ -129,8 +129,7 @@ class Add_Screen extends Component {
     };
     
     clearText = () => {
-        this.setState({firstName: ''})
-        this.setState({lastName: ''})
+        this.textInput.current.clear()
     }
 
     fetchData = () => {
@@ -525,7 +524,7 @@ class Add_Screen extends Component {
                         specify how often:</Text>
                         <TextInput style = {styles.add_patient_Tobacco_YES_specs}
                         underlineColorAndroid = "transparent"
-                        placeholder = 'please specify here:'
+                        placeholder = 'specify how many packs a day:'
                         placeholderTextColor="#808080"
                         autoCapitalize = 'none'
                         onChangeText={(province) => this.setState({ province })}
