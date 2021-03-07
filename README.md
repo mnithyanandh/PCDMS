@@ -9,5 +9,3 @@
 - The PCDM app allows healthcare providers to view detailed clinical data for each patient and also allows professionals to figure out if any patient is in critical condition.
 
 - It allows the healthcare provider to add/view the patient Medical History, can keep an eye on the current health status of different patients registered in the system. The app also holds contact informations of patients, doctors and different clinical data such as Blood Pressure, Respiratory Rate, Blood Oxygen Level etc.
-
-Patient Data Management System Application via React Native
