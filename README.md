@@ -1,27 +1,11 @@
-# MAPD_F2020
-Mobile Applications Development Program - Centennial College. 
-This is the master repo for the MAPD F2020 program.
+Patient Clinical Data Management (PCDM)
 
-# Classes listed:
-- MAPD 711
-- MAPD 712
-- MAPD 713
-- MAPD 714
-- MAPD 715
-- MAPD 721
-- MAPD 722
-- MAPD 724
-- MAPD 725
-- MAPD 726
+- PCDM application is targeted towards healthcare professionals working in various fields such asnursing, diagnosis, surgery and primary healthcare.
 
-# Latest operational branches:
-- MAPD 711 Samsung Android Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_711_Samsung_Android_Development
-- MAPD 714 iOS Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_714_iOS_Development
-- MAPD 712 Web Technologies: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_712_Web_Technologies
-- MAPD 713 Enterprise Technologies: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_713_Enterprise_Technologies
-- MAPD 715 Mobile UI/UX Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_715_Mobile_UiUx_Design
-- MAPD 721 Samsung Advanced Android Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_721_Samsung_Advanced_Adnroid_Development
-- MAPD 722 Mobile Web Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_722_Mobile_Web_Development
-- MAPD 724 Advanced iOS Development: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_724_Advanced_iOS_Development
-- MAPD 725 Emerging Technologies: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_725_Emerging_Technologies
-- MAPD 726 Mobile Applications Development Project: https://github.com/mnithyanandh/MAPD_F2020/tree/MAPD_726_Mobile_Applications_Development_Project
+- This application is meant to comply and follow the REST API implementation in terms of usability structure to make the app more feasible to improvements and scalability.
+
+- It follows the structure of a private access code given from the health organization to healthcare professional for quick logins and to aid in data security and privacy. As a result, this application aims at following all the regulations and complies with the HIPAA act.
+
+- The PCDM app allows healthcare providers to view detailed clinical data for each patient and also allows professionals to figure out if any patient is in critical condition.
+
+- It allows the healthcare provider to add/view the patient Medical History, can keep an eye on the current health status of different patients registered in the system. The app also holds contact informations of patients, doctors and different clinical data such as Blood Pressure, Respiratory Rate, Blood Oxygen Level etc.
