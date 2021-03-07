@@ -12,4 +12,4 @@
 
 # Project Folder:
 
-- Kindly Download StormBreaker_m4 for latest work.
+- Kindly Download StormBreaker_m4 under the Project Branch for latest work.
