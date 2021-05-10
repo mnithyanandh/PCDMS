@@ -1,4 +1,4 @@
-# Patient Clinical Data Management (PCDM)
+# Patient Clinical Data Management System (PCDMS)
 
 - PCDM application is targeted towards healthcare professionals working in various fields such asnursing, diagnosis, surgery and primary healthcare.
 
